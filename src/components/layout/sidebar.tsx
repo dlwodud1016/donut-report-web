@@ -1,5 +1,4 @@
 import { hero, navSections } from "@/data/palantir";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -12,8 +11,8 @@ export function Sidebar(): JSX.Element {
                     <Badge className="bg-primary/30 text-primary-foreground/80">
                         성장주
                     </Badge>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 text-xl font-semibold">
-                        PLTR
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/25 via-slate-950/70 to-blue-900/30 text-xl font-semibold text-emerald-100 shadow-[0_12px_24px_rgba(16,185,129,0.25)]">
+                        {hero.ticker.replace("NASDAQ:", "").trim()}
                     </div>
                     <CardTitle className="text-xl text-foreground">
                         {hero.name}

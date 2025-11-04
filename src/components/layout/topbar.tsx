@@ -1,3 +1,4 @@
+import { DonutIcon } from "@/components/icons/donut-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -5,8 +6,8 @@ export function Topbar(): JSX.Element {
     return (
         <header className="flex items-center justify-between gap-4 rounded-3xl border border-border/60 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-blue-900/60 px-6 py-5 shadow-2xl shadow-black/40 backdrop-blur-md">
             <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 text-2xl">
-                    🍩
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-gradient-to-br from-slate-900/40 via-blue-900/50 to-slate-950/70 p-1">
+                    <DonutIcon className="h-full w-full" variant="glass" />
                 </div>
                 <div className="leading-tight">
                     <p className="text-sm font-semibold tracking-[0.08em] text-muted-foreground/80">
