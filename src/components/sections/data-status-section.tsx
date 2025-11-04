@@ -71,7 +71,10 @@ export function DataStatusSection(): JSX.Element {
                     Report 에서는 리포트 문체와 정보 구조를 검증하는 데
                     집중합니다.
                 </p>
-                <p>피드백은 notion.so/donut-report/feedback 으로 보내주세요.</p>
+                <p>
+                    피드백은 https://forms.gle/yghAehBPfrNbEoHC9 으로
+                    보내주세요.
+                </p>
             </div>
         </Card>
     );
