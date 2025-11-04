@@ -72,7 +72,7 @@ export function Sidebar(): JSX.Element {
                 </CardContent>
             </Card>
 
-            <Card className="border-border/40 bg-slate-950/70 p-0 text-sm text-muted-foreground">
+            {/* <Card className="border-border/40 bg-slate-950/70 p-0 text-sm text-muted-foreground">
                 <CardHeader className="p-6 pb-4">
                     <CardTitle className="text-base text-foreground">
                         최근 본 리포트
@@ -84,7 +84,7 @@ export function Sidebar(): JSX.Element {
                     <p>CrowdStrike · 보안 SaaS</p>
                     <p>ServiceNow · 워크플로 플랫폼</p>
                 </CardContent>
-            </Card>
+            </Card> */}
         </aside>
     );
 }
