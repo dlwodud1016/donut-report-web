@@ -66,9 +66,9 @@ export function DiversificationSection(): JSX.Element {
   return (
     <Card id="section-2-2" className="space-y-8 bg-gradient-to-br from-indigo-900/30 via-slate-950/70 to-blue-900/40 p-8 shadow-2xl">
       <CardHeader className="space-y-3">
-        <CardTitle className="text-2xl text-foreground">2.2 수익 다변화 계획</CardTitle>
+        <CardTitle className="text-2xl text-foreground">2.2 돈 버는 곳은 어떻게 나뉘나</CardTitle>
         <p className="text-base text-muted-foreground">
-          정부·국방 50%, 제조·에너지 35%, 규제 산업 15%로 포트폴리오를 쌓고 있습니다. 안정적인 정부 수요에, 민간 ARPU 성장까지 더해진 구조를 확인해 보세요.
+          정부·국방 50%, 제조·에너지 35%, 규제 산업 15% 비중으로 매출 원천이 흩어져 있습니다. 안정적인 정부 수요 위에 민간 고객당 매출(ARPU)이 꾸준히 늘고 있는지 확인해 보세요.
         </p>
       </CardHeader>
       <CardContent className="space-y-8">

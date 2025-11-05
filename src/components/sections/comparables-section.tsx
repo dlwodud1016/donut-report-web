@@ -5,8 +5,8 @@ export function ComparablesSection(): JSX.Element {
   return (
     <Card id="section-2-5" className="space-y-6 bg-gradient-to-br from-slate-900/70 via-indigo-900/40 to-slate-950/60 p-8 shadow-2xl">
       <header className="space-y-2">
-        <h2 className="text-2xl font-semibold text-foreground">2.5 비교할 성장주</h2>
-        <p className="text-base text-muted-foreground">동일한 “데이터 + AI” 테마에서 주목할 만한 두 곳을 함께 살펴보세요.</p>
+        <h2 className="text-2xl font-semibold text-foreground">2.5 비슷한 성장주와 비교</h2>
+        <p className="text-base text-muted-foreground">같은 “데이터 + AI” 흐름에서 자주 언급되는 기업 두 곳을 나란히 보면서 팔란티어의 위치를 가늠해 보세요.</p>
       </header>
       <div className="grid gap-4 md:grid-cols-2">
         {comparisonCards.map((card) => (

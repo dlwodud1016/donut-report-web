@@ -42,7 +42,7 @@ export function Sidebar(): JSX.Element {
                                 업데이트
                             </p>
                             <p className="mt-1 text-lg font-semibold text-foreground">
-                                2025.10.30
+                                2025.11.05
                             </p>
                         </div>
                     </div>

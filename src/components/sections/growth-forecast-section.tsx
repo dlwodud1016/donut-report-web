@@ -28,12 +28,12 @@ export function GrowthForecastSection(): JSX.Element {
         <Card id="section-2-1" className="space-y-6 bg-slate-900/70 p-8">
             <CardHeader className="space-y-2">
                 <CardTitle className="text-2xl text-foreground">
-                    2.1 수익 및 매출 성장 전망
+                    2.1 매출이 얼마나 늘어날까?
                 </CardTitle>
                 <p className="text-base text-muted-foreground">
-                    정부 계약이 안정성을, AIP 업셀과 민간 고객 확장이 성장성을
-                    책임지는 구조입니다. “안전판”과 “성장 엔진”이 동시에
-                    돌아가는지 체크해 봤어요.
+                    정부 계약이 기본 매출을 지켜 주고, AIP 업셀과 민간 고객
+                    확장이 추가 성장을 이끕니다. 안전판과 성장 엔진이 함께
+                    돌아가는 구조인지 살펴봅니다.
                 </p>
             </CardHeader>
             <CardContent className="space-y-8">

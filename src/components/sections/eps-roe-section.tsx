@@ -5,9 +5,9 @@ export function EpsRoeSection(): JSX.Element {
     <Card id="section-2-3" className="grid gap-8 bg-gradient-to-br from-slate-900/70 via-blue-950/40 to-slate-900/60 p-8 lg:grid-cols-2">
       <div className="space-y-5">
         <header className="space-y-2">
-          <h2 className="text-2xl font-semibold text-foreground">2.3 주당순이익(EPS) 전망</h2>
+          <h2 className="text-2xl font-semibold text-foreground">2.3 한 주당 벌어들일 돈(EPS)</h2>
           <p className="text-base text-muted-foreground">
-            스톡옵션 부담이 줄어들고, 고정비가 분산되면서 EPS가 가파르게 개선됩니다. “현금 창출력”이 얼마나 빨리 늘어나는지에 주목해 주세요.
+            스톡옵션 비용이 줄고 고정비가 분산되면서 한 주당 벌어들이는 돈이 빠르게 늘어납니다. 현금을 쌓는 속도가 얼마나 빨라지는지에 주목해 주세요.
           </p>
         </header>
         <div className="rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/20 via-slate-950/70 to-emerald-500/5 p-6 shadow-xl shadow-black/30 backdrop-blur">
@@ -23,9 +23,9 @@ export function EpsRoeSection(): JSX.Element {
       </div>
       <div className="space-y-5" id="section-2-4">
         <header className="space-y-2">
-          <h2 className="text-2xl font-semibold text-foreground">2.4 자기자본이익률(ROE)</h2>
+          <h2 className="text-2xl font-semibold text-foreground">2.4 자본을 얼마나 잘 굴리나(ROE)</h2>
           <p className="text-base text-muted-foreground">
-            ROE는 아직 낮지만, 매출 총이익률이 78% 수준이라 영업 레버리지 효과가 크게 작동할 수 있습니다.
+            아직은 낮은 편이지만 매출 총이익률이 78% 수준이라 규모가 커질수록 자본을 쓰는 효율이 빠르게 좋아질 여지가 있습니다.
           </p>
         </header>
         <div className="rounded-3xl border border-purple-400/30 bg-gradient-to-br from-purple-500/15 via-slate-950/70 to-purple-500/5 p-6 shadow-xl shadow-black/30 backdrop-blur">
