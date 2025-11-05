@@ -2,28 +2,28 @@ import { Card } from "@/components/ui/card";
 
 const dataRows = [
     {
-        metric: "주가 / 시총",
-        type: "마켓 데이터",
-        updated: "2025-10-30",
-        source: "NASDAQ, KRX",
+        metric: "Company Analysis",
+        type: "Report refresh",
+        updated: "2025/11/04 22:37 UTC",
+        source: "Simply Wall St",
     },
     {
-        metric: "재무제표",
-        type: "10-K, 10-Q",
-        updated: "2024-12-31",
-        source: "SEC EDGAR",
+        metric: "End of Day Share Price",
+        type: "Market data",
+        updated: "2025/11/04 00:00 UTC",
+        source: "NASDAQGS:PLTR",
     },
     {
-        metric: "컨센서스 전망",
-        type: "애널리스트 추정",
-        updated: "2025-10-25",
-        source: "Bloomberg, FactSet",
+        metric: "Earnings",
+        type: "Quarterly filings",
+        updated: "2025/09/30",
+        source: "S&P Global · SEC",
     },
     {
-        metric: "고객 사례",
-        type: "기자재 조사",
-        updated: "2025-10-20",
-        source: "팔란티어 고객 인터뷰",
+        metric: "Annual Earnings",
+        type: "FY filings",
+        updated: "2024/12/31",
+        source: "S&P Global · SEC",
     },
 ];
 

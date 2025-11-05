@@ -49,14 +49,14 @@ export const hero = {
     industry: "소프트웨어 · 미국 나스닥",
     name: "Palantir Technologies Inc",
     ticker: "NASDAQ: PLTR",
-    price: "$205.04",
-    updated: "업데이트: 2025년 11월 03일",
+    price: "$190.70",
+    updated: "업데이트: 2025년 11월 04일",
     summary:
-        "정부와 대기업이 쌓아 둔 데이터를 연결하고, 인공지능이 바로 활용할 수 있는 형태로 다듬어 주는 데이터 플랫폼 기업입니다. Donut Report 에서는 “쉬운 말로 설명하는 리포트” 를 제공중입니다.",
+        "정부와 대기업이 쌓아 둔 데이터를 연결하고, 인공지능이 바로 활용할 수 있는 형태로 다듬어 주는 데이터 플랫폼 기업입니다. 2025년 11월 기준 애널리스트 컨센서스는 향후 3년 매출 26.6%, EPS 25.5% 성장과 ROE 28.9%를 전망하고 있습니다.",
     heroPoints: [
-        "정부·민간 매출 비중이 5:5로 안정적인 구조",
-        "기존 고객 NRR 113% → 쓰면 쓸수록 지출이 늘어나는 제품",
-        '"인공지능 셰프" 비유로 복잡한 사업을 쉽게 전달',
+        "미래 성장 체크리스트 6/6 통과 — EPS 성장률 25.5%, ROE 28.9%",
+        "정부·민간 매출이 50:50으로 균형 잡혀 장기 계약과 업셀이 공존",
+        '"인공지능 셰프" 비유로 복잡한 데이터 파이프라인을 쉽게 설명',
     ],
 };
 
@@ -70,27 +70,29 @@ export const navSections: NavSection[] = [
 ];
 
 export const metricChips: MetricChip[] = [
-    { label: "연 매출 성장률", value: "+21%", tone: "positive" },
-    { label: "기존 고객 NRR", value: "113%", tone: "positive" },
-    { label: "영업이익률", value: "16%", tone: "attention" },
-    { label: "현금 및 투자 여력", value: "12억 달러", tone: "positive" },
+    { label: "예상 매출 성장률", value: "+26.6%", tone: "positive" },
+    { label: "예상 EPS 성장률", value: "+25.5%", tone: "positive" },
+    { label: "3년 후 ROE", value: "28.9%", tone: "positive" },
+    { label: "애널리스트 커버리지", value: "Good · 27명", tone: "neutral" },
+    { label: "P/E Ratio", value: "413.0x", tone: "attention" },
+    { label: "P/S Ratio", value: "116.1x", tone: "attention" },
 ];
 
 export const highlightCards: HighlightCard[] = [
     {
-        icon: "🧑‍🍳",
-        title: "비즈니스 모델",
-        body: "팔란티어는 데이터를 손질해주는 “인공지능 셰프”예요. 복잡한 데이터를 정리하고 AI가 바로 활용할 수 있게 레시피를 짜줍니다.",
+        icon: "🧠",
+        title: "데이터-중심 AI 플랫폼",
+        body: "팔란티어는 복잡한 원천 데이터를 정리하고 AI가 바로 활용할 수 있게 만드는 Foundry·AIP 조합으로 가치 사슬을 통제합니다.",
     },
     {
-        icon: "🏛️",
-        title: "고객 구조",
-        body: "정부 50% · 민간 50% 비중으로 균형 잡힌 매출 구조를 보유합니다. 국방부 계약이 안정적인 현금흐름을 제공합니다.",
+        icon: "📈",
+        title: "3년 성장 궤적",
+        body: "애널리스트 전망 기준 향후 3년 매출은 연 26.6%, EPS는 25.5% 성장하며 성장성 체크리스트 6/6을 충족했습니다.",
     },
     {
-        icon: "🧱",
-        title: "AI 플랫폼 전략",
-        body: "AIP(AI Platform)를 통해 고객이 직접 워크플로를 조립할 수 있도록 “레고 블록” 형태로 기능을 제공합니다.",
+        icon: "🔐",
+        title: "장기 계약 기반",
+        body: "미 국방부 등 공공 부문 장기 계약이 매출의 약 15% 안전판을 제공하고, 민간 업셀과 AIP PoC 확대가 성장 엔진을 담당합니다.",
     },
 ];
 
@@ -113,21 +115,21 @@ export const comparisonCards: ComparisonCard[] = [
 export const forecastStats: ForecastStat[] = [
     {
         label: "FY27 예상 매출",
-        value: "75.6억 달러",
-        detail: "FY24 대비 +164%, 연평균 성장률(CAGR) 26%",
+        value: "82.5억 달러",
+        detail: "FY24 대비 +164%, 연평균 성장률(CAGR) 26.6%",
         tone: "positive",
     },
     {
-        label: "FY27 예상 영업이익",
-        value: "21.8억 달러",
-        detail: "규모의 경제로 영업이익률 28%까지 확대",
+        label: "FY27 예상 순이익",
+        value: "25.1억 달러",
+        detail: "이익 CAGR 29.2%로 규모의 경제 가속",
         tone: "positive",
     },
     {
-        label: "애널리스트 커버리지",
-        value: "27명의 전망",
-        detail: "커버리지 확대로 수익·매출 추정 업데이트가 매달 발생",
-        tone: "neutral",
+        label: "3년 EPS CAGR",
+        value: "+25.5%",
+        detail: "소프트웨어 업계 평균 성장률(20%)을 앞지름",
+        tone: "positive",
     },
 ];
 
@@ -135,74 +137,74 @@ export const futureChecks: FutureCheck[] = [
     {
         label: "성장률이 안전자산을 웃돔",
         description:
-            "예상 EPS 성장률(31.6%)이 미국 10년물 채권 수익률(3.1%)을 크게 상회합니다.",
+            "예상 EPS 성장률(29.2%)이 미국 10년물 국채 수익률(3.1%)을 크게 상회합니다.",
         status: "pass",
     },
     {
         label: "시장 평균 대비 높은 성장",
         description:
-            "앞으로 3년간 연평균 EPS 성장률이 글로벌 소프트웨어 업계 평균을 두 배 이상 앞섭니다.",
+            "향후 3년 EPS CAGR 25.5%로 미국 시장 평균 성장률(16%)을 뛰어넘습니다.",
         status: "pass",
     },
     {
         label: "고성장 요건 충족",
         description:
-            "애널리스트 전망 기준 매출·이익이 모두 연 20% 이상 증가하는 “High Growth” 조건에 부합합니다.",
+            "애널리스트 컨센서스 기준 매출·이익 모두 연 20% 이상 증가하는 “High Growth” 트리거에 부합합니다.",
         status: "pass",
     },
     {
         label: "매출 성장과 산업 추세",
         description:
-            "데이터 인프라·AI 산업 평균(10.5%)보다 빠른 25.1% 매출 성장률을 예상합니다.",
+            "데이터 인프라·AI 산업 평균(10.5%)보다 빠른 26.6% 매출 성장률을 예상합니다.",
         status: "pass",
     },
 ];
 
 export const recentGrowthUpdates: RecentGrowthUpdate[] = [
     {
-        title: "2025년 가이던스 상향 — 매출 +21%, 영업이익 +18%",
-        date: "2025.08.05",
+        title: "3분기 2025 실적: 매출·EPS 컨센서스 상회",
+        date: "2025.11.04",
         tag: "실적",
         summary:
-            "2분기 실적 발표에서 올해 가이던스를 재차 상향했습니다. 경기 둔화 우려에도 정부·민간 계약 모두 견조합니다.",
+            "3분기 실적에서 매출과 EPS가 모두 전망치를 넘어서며 연간 가이던스를 다시 확인했습니다.",
     },
     {
-        title: "AIP 2.0 출시 — 고객이 직접 워크플로 설계",
-        date: "2025.07.18",
-        tag: "제품",
-        summary:
-            "데이터 연결부터 보고서 자동화까지 한 화면에서 설계할 수 있게 되면서 신규 PoC 요청이 늘고 있습니다.",
-    },
-    {
-        title: "미 국방부 프로젝트 3년 연장 확정",
-        date: "2025.06.30",
+        title: "Red Cat 드론에 VNav 통합 테스트 성공",
+        date: "2025.10.27",
         tag: "계약",
         summary:
-            "연 4억 달러 규모의 국방부 계약이 2028년까지 연장돼 향후 투자 비용을 떠받쳐줄 현금흐름이 확보됐습니다.",
+            "Black Widow™ 드론에 Palantir의 VNav 소프트웨어를 탑재한 비행 테스트가 완료돼 방산 파트너십이 확대되고 있습니다.",
+    },
+    {
+        title: "헬스케어 AI 랩 ‘R37’ 공동 론칭",
+        date: "2025.03.14",
+        tag: "제품",
+        summary:
+            "R1과 함께 Palantir AIP 기반의 ‘R37’ AI 랩을 공개하며 의료 수익 사이클을 자동화하는 워크플로를 선보였습니다.",
     },
 ];
 
 export const timelineItems: TimelineItem[] = [
     {
-        title: "미 국방부 계약 3년 연장",
-        date: "2025.10.28",
-        summary: "전체 매출의 15% 안전판 확보",
-        detail: "수년째 담당하던 군 정보 분석 프로젝트가 3년 추가 연장됐습니다. 약 4억 달러 규모라 향후 실험과 성장을 뒷받침할 현금흐름이 생깁니다.",
+        title: "2025년 3분기 실적 서프라이즈",
+        date: "2025.11.04",
+        summary: "매출·EPS 모두 컨센서스 상회",
+        detail: "3분기 실적 발표에서 수익과 매출이 모두 애널리스트 전망치를 넘어섰습니다. 연간 성장률 20%대 전망이 유지되며 가이던스를 재확인했습니다.",
         tone: "positive",
     },
     {
-        title: "AI Platform(AIP) 대규모 업데이트",
-        date: "2025.10.15",
-        summary: "고객이 직접 워크플로 조립",
-        detail: "데이터 연결부터 보고서 자동화까지 한 화면에서 설계하도록 지원합니다. 경쟁사도 유사 기능을 내고 있어 차별화가 과제로 남아 있습니다.",
-        tone: "neutral",
+        title: "VNav 드론 테스트 완료",
+        date: "2025.10.27",
+        summary: "방산 파트너십 확장",
+        detail: "Red Cat Holdings와의 협업으로 VNav 소프트웨어를 탑재한 Black Widow™ 드론 시험 비행을 성공적으로 마쳤습니다. 국방 부문의 기술 신뢰도를 높였습니다.",
+        tone: "positive",
     },
     {
-        title: "주가 급등 후 숨 고르기",
-        date: "2025.10.01",
-        summary: "AI 테마 랠리 후 15% 조정",
-        detail: "실적보다는 투자 심리 요인이 컸습니다. 단기 변동성은 높지만 장기적으론 계약 지속성·고객 유지율이 관건입니다.",
-        tone: "attention",
+        title: "헬스케어 AI 랩 R37 출시",
+        date: "2025.03.14",
+        summary: "AIP 의료 워크플로 가속",
+        detail: "R1과 공동으로 ‘R37’ AI 랩을 공개해 헬스케어 재무 사이클 자동화 솔루션을 선보였습니다. AIP의 산업별 응용 범위를 넓히는 계기가 됐습니다.",
+        tone: "neutral",
     },
 ];
 

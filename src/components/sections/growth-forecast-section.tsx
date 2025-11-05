@@ -125,16 +125,16 @@ export function GrowthForecastSection(): JSX.Element {
                         </div>
                         <ul className="space-y-2 rounded-3xl border border-border/40 bg-slate-950/60 p-5 text-sm text-muted-foreground">
                             <li>
-                                • FY24 가이던스: 매출 +21%, 영업이익 +18%로 두
-                                자릿수 성장을 재확인했습니다.
+                                • FY27 컨센서스: 매출 82.5억 달러, 순이익 25.1억
+                                달러로 3년 CAGR이 각각 26.6%, 29.2%에 달합니다.
                             </li>
                             <li>
-                                • 국방부 3년 연장 계약으로 FY25~FY27 매출의
-                                15%가 이미 확보된 상태입니다.
+                                • 예상 ROE가 28.9%까지 상승해 산업 평균과
+                                미국 시장 성장률을 모두 상회합니다.
                             </li>
                             <li>
-                                • Foundry/AIP 업셀 비중이 커지며 민간 매출
-                                비중이 2022년 45% → 2025년 52%로 확대됩니다.
+                                • 애널리스트 27명이 팔란티어를 커버하며
+                                전망치는 2025년 11월 4일 기준 최신화됐습니다.
                             </li>
                         </ul>
                     </section>
