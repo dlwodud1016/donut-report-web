@@ -1,17 +1,9 @@
 import { useCallback, useMemo, useState } from "react";
 
-import { RadarChart } from "@/components/charts/radar-chart";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
     Select,
     SelectContent,
@@ -32,6 +24,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { Outlet, useNavigate } from "@tanstack/react-router";
 import {
     ColumnDef,
     SortingState,
@@ -47,6 +40,12 @@ import type {
 import { tastemakerProfiles } from "@/data/tastemakers";
 import { ArrowUpDown, Search } from "lucide-react";
 import { usePageSeo } from "@/hooks/use-page-seo";
+import {
+    computeDonutGrade,
+    formatAssetValue,
+    metricKeys,
+    translateMetric,
+} from "@/lib/tastemaker-metrics";
 
 const axisExplanations = [
     {
@@ -65,24 +64,6 @@ const axisExplanations = [
     { label: "신뢰도", description: "외부 평판, 규제 리스크, 윤리성 평가" },
 ] as const;
 
-const metricKeys: readonly TastemakerMetricKey[] = [
-    "impact",
-    "accuracy",
-    "engagement",
-    "transparency",
-    "credibility",
-] as const;
-
-const metricWeights: Record<TastemakerMetricKey, number> = {
-    impact: 0.2,
-    accuracy: 0.2,
-    engagement: 0.2,
-    transparency: 0.2,
-    credibility: 0.2,
-};
-
-const sigmoid = (value: number): number => 1 / (1 + Math.exp(-value));
-
 type TableColumnMeta = {
     headerClassName?: string;
     cellClassName?: string;
@@ -94,10 +75,8 @@ export function TastemakersPage(): JSX.Element {
     const [sorting, setSorting] = useState<SortingState>([
         { id: "name", desc: false },
     ]);
-    const [selectedProfile, setSelectedProfile] =
-        useState<TastemakerProfile | null>(null);
-    const [detailOpen, setDetailOpen] = useState(false);
     const [activeAssetId, setActiveAssetId] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     const tagOptions = useMemo(
         () =>
@@ -121,18 +100,19 @@ export function TastemakersPage(): JSX.Element {
         });
     }, [searchTerm, tagFilter]);
 
-    const openDetail = useCallback((profile: TastemakerProfile): void => {
-        setSelectedProfile(profile);
-        setDetailOpen(true);
-    }, []);
+    const openDetail = useCallback(
+        (profile: TastemakerProfile): void => {
+            void navigate({
+                to: "/tastemakers/$profileId",
+                params: { profileId: profile.id },
+            });
+        },
+        [navigate]
+    );
 
-    const computeInfluencerScore = useCallback(
+    const calculateDonutGrade = useCallback(
         (profile: TastemakerProfile): number => {
-            const weightedSum = metricKeys.reduce((accum, key) => {
-                return accum + metricWeights[key] * (profile.metrics[key] / 100);
-            }, 0);
-            const logisticInput = (weightedSum - 0.5) * 6;
-            return sigmoid(logisticInput) * 100;
+            return computeDonutGrade(profile);
         },
         []
     );
@@ -168,11 +148,22 @@ export function TastemakersPage(): JSX.Element {
             return 0;
         }
         const total = filteredProfiles.reduce(
-            (accum, profile) => accum + computeInfluencerScore(profile),
+            (accum, profile) => accum + calculateDonutGrade(profile),
             0
         );
         return total / filteredProfiles.length;
-    }, [filteredProfiles, computeInfluencerScore]);
+    }, [filteredProfiles, calculateDonutGrade]);
+
+    const handleAssetOpen = useCallback(
+        (id: string) => {
+            setActiveAssetId(id);
+        },
+        [setActiveAssetId]
+    );
+
+    const handleAssetClose = useCallback(() => {
+        setActiveAssetId(null);
+    }, [setActiveAssetId]);
 
     const columns = useMemo<ColumnDef<TastemakerProfile, unknown>[]>(() => {
         return [
@@ -413,8 +404,8 @@ export function TastemakersPage(): JSX.Element {
                         value={row.original.assetsValue}
                         description={row.original.assets}
                         isOpen={activeAssetId === row.original.id}
-                        onOpen={setActiveAssetId}
-                        onClose={() => setActiveAssetId(null)}
+                        onOpen={handleAssetOpen}
+                        onClose={handleAssetClose}
                     />
                 ),
                 meta: {
@@ -425,7 +416,7 @@ export function TastemakersPage(): JSX.Element {
             },
             {
                 id: "donutGrade",
-                accessorFn: (profile) => computeInfluencerScore(profile),
+                accessorFn: (profile) => calculateDonutGrade(profile),
                 header: ({ column }) => (
                     <button
                         type="button"
@@ -476,7 +467,13 @@ export function TastemakersPage(): JSX.Element {
                 } satisfies TableColumnMeta,
             },
         ];
-    }, [activeAssetId, computeInfluencerScore, openDetail]);
+    }, [
+        activeAssetId,
+        calculateDonutGrade,
+        handleAssetClose,
+        handleAssetOpen,
+        openDetail,
+    ]);
 
     const table = useReactTable({
         data: filteredProfiles,
@@ -488,12 +485,6 @@ export function TastemakersPage(): JSX.Element {
     });
 
     const tableRows = table.getRowModel().rows;
-
-    const selectedDonutGrade = useMemo(
-        () =>
-            selectedProfile ? computeInfluencerScore(selectedProfile) : null,
-        [selectedProfile, computeInfluencerScore]
-    );
 
     usePageSeo({
         title: "테이스트메이커 인덱스 | Donut Report",
@@ -714,179 +705,9 @@ export function TastemakersPage(): JSX.Element {
                 </Card>
             </div>
 
-            <Dialog open={detailOpen} onOpenChange={setDetailOpen}>
-                <DialogContent className="sm:max-w-3xl">
-                    {selectedProfile ? (
-                        <>
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl text-foreground">
-                                    {selectedProfile.name}
-                                </DialogTitle>
-                                <p className="text-sm text-muted-foreground">
-                                    {selectedProfile.tagline}
-                                </p>
-                            </DialogHeader>
-                            <ScrollArea className="max-h-[70vh] pr-2">
-                                <div className="grid gap-6 py-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-                                    <div className="space-y-5">
-                                        <div className="flex items-start gap-4 rounded-2xl border border-border/30 bg-muted p-4 dark:bg-slate-900/60">
-                                            {selectedProfile.image ? (
-                                                <img
-                                                    src={selectedProfile.image}
-                                                    alt={`${selectedProfile.name} avatar`}
-                                                    className="h-20 w-20 rounded-xl border border-border/40 bg-card object-cover"
-                                                />
-                                            ) : null}
-                                            <div className="space-y-2">
-                                                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
-                                                    {selectedProfile.focus.join(
-                                                        " · "
-                                                    )}
-                                                </p>
-                                                {selectedProfile.assets ? (
-                                                    <p className="text-sm text-foreground">
-                                                        <span className="font-semibold text-primary">
-                                                            추정 자산 규모
-                                                        </span>{" "}
-                                                        <span className="text-muted-foreground">
-                                                            {
-                                                                selectedProfile.assets
-                                                            }
-                                                        </span>
-                                                    </p>
-                                                ) : null}
-                                                {selectedDonutGrade !== null ? (
-                                                    <div className="rounded-2xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-primary dark:border-primary/40 dark:bg-primary/15 dark:text-primary-foreground">
-                                                        <p className="text-xs uppercase tracking-[0.2em] text-primary/70 dark:text-primary-foreground/80">
-                                                            Donut Grade
-                                                        </p>
-                                                        <p className="mt-1 text-2xl font-semibold text-primary dark:text-primary-foreground">
-                                                            {selectedDonutGrade.toFixed(1)}
-                                                        </p>
-                                                    </div>
-                                                ) : null}
-                                                <div className="flex flex-wrap gap-2 text-xs text-muted-foreground/70">
-                                                    {Object.entries(
-                                                        selectedProfile.metrics
-                                                    ).map(([key, value]) => (
-                                                        <span
-                                                            key={key}
-                                                            className="rounded-full border border-border/40 bg-card px-3 py-1"
-                                                        >
-                                                            {translateMetric(
-                                                                key as TastemakerMetricKey
-                                                            )}{" "}
-                                                            · {value}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-3">
-                                            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground/70">
-                                                자료 · SNS 링크
-                                            </h3>
-                                            <ul className="grid gap-2 text-sm text-muted-foreground">
-                                                {selectedProfile.socials.map(
-                                                    (social) => (
-                                                        <li key={social.url}>
-                                                            <a
-                                                                href={
-                                                                    social.url
-                                                                }
-                                                                className="text-primary underline-offset-4 hover:underline"
-                                                                target="_blank"
-                                                                rel="noreferrer"
-                                                            >
-                                                                {social.label}
-                                                            </a>
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                        </div>
-
-                                        <div className="space-y-3">
-                                            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground/70">
-                                                최근 언급
-                                            </h3>
-                                            <ul className="space-y-2 text-sm text-muted-foreground">
-                                                {selectedProfile.latestNews.map(
-                                                    (news) => (
-                                                        <li
-                                                            key={`${selectedProfile.id}-${news.title}`}
-                                                            className="rounded-xl border border-border/40 bg-muted px-4 py-3 dark:bg-slate-900/60"
-                                                        >
-                                                            <p className="font-medium text-foreground">
-                                                                <a
-                                                                    href={
-                                                                        news.url
-                                                                    }
-                                                                    className="hover:underline"
-                                                                    target="_blank"
-                                                                    rel="noreferrer"
-                                                                >
-                                                                    {news.title}
-                                                                </a>
-                                                            </p>
-                                                            <p className="mt-1 text-xs text-muted-foreground/70">
-                                                                {news.source} ·{" "}
-                                                                {news.published}
-                                                            </p>
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <Card className="border border-border/40 bg-card shadow-inner dark:bg-slate-950/60">
-                                        <CardContent className="flex flex-col items-center gap-4 p-4">
-                                            <RadarChart
-                                                metrics={
-                                                    selectedProfile.metrics
-                                                }
-                                                minHeight={260}
-                                            />
-                                            <p className="text-center text-xs text-muted-foreground/80">
-                                                점수는 최근 12개월 데이터를
-                                                기준으로 산출했습니다.
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </ScrollArea>
-                        </>
-                    ) : null}
-                </DialogContent>
-            </Dialog>
+            <Outlet />
         </div>
     );
-}
-
-function translateMetric(metric: TastemakerMetricKey): string {
-    switch (metric) {
-        case "impact":
-            return "영향력";
-        case "accuracy":
-            return "정확성";
-        case "engagement":
-            return "관여도";
-        case "transparency":
-            return "투명성";
-        case "credibility":
-            return "신뢰도";
-        default:
-            return metric;
-    }
-}
-
-function formatAssetValue(value: number): string {
-    const formatter = new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: value >= 10 ? 0 : 1,
-        maximumFractionDigits: value >= 10 ? 0 : 1,
-    });
-    return `${formatter.format(value)}B`;
 }
 
 type AssetValueCellProps = {

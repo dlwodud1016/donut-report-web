@@ -4,6 +4,7 @@ import App from "./App";
 import { HomePage } from "./components/home/home-page";
 import { ReportPage } from "./pages/report-page";
 import { TastemakersPage } from "./pages/tastemakers-page";
+import { TastemakerDetailPage } from "./pages/tastemaker-detail-page";
 
 const rootRoute = new RootRoute({
     component: App,
@@ -26,6 +27,14 @@ const tastemakersRoute = new Route({
     path: "/tastemakers",
     component: TastemakersPage,
 });
+
+const tastemakerDetailRoute = new Route({
+    getParentRoute: () => tastemakersRoute,
+    path: "$profileId",
+    component: TastemakerDetailPage,
+});
+
+tastemakersRoute.addChildren([tastemakerDetailRoute]);
 
 const routeTree = rootRoute.addChildren([
     homeRoute,
