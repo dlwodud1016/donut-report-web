@@ -13,6 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import type { TastemakerMetricKey, TastemakerProfile } from "@/data/tastemakers";
 import { tastemakerProfiles } from "@/data/tastemakers";
 import { ArrowUpDown, Search } from "lucide-react";
+import { usePageSeo } from "@/hooks/use-page-seo";
 
 const axisExplanations = [
     { label: "영향력", description: "미디어 언급, 업계 인용도, 시장에 미치는 영향력 지수" },
@@ -84,6 +85,15 @@ export function TastemakersPage(): JSX.Element {
         setSelectedProfile(profile);
         setDetailOpen(true);
     };
+
+    usePageSeo({
+        title: "테이스트메이커 인덱스 | Donut Report",
+        description:
+            "Donut Report 테이스트메이커 인덱스에서 금융·투자 인플루언서를 영향력, 정확성, 관여도, 투명성, 신뢰도로 비교해 보세요.",
+        keywords: ["Donut Report", "투자 인플루언서", "테이스트메이커 인덱스", "금융 콘텐츠"],
+        canonicalPath: "/tastemakers",
+        ogImage: "/og-donut-report.svg",
+    });
 
     return (
         <div className="flex flex-col gap-8">

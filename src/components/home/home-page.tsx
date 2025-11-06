@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { hero } from "@/data/palantir";
 import { useNavigate } from "@tanstack/react-router";
+import { usePageSeo } from "@/hooks/use-page-seo";
 
 const brandHighlights = [
     {
@@ -32,6 +33,15 @@ export function HomePage(): JSX.Element {
     const goReport = (): void => {
         void navigate({ to: "/report" });
     };
+
+    usePageSeo({
+        title: "Donut Report | 한 입 주식 리포트",
+        description:
+            "도넛 한 조각 먹는 시간에 읽는 쉬운 투자 리포트. 핵심 지표와 친근한 설명으로 누구나 이해할 수 있는 Donut Report를 만나보세요.",
+        keywords: ["Donut Report", "투자 리포트", "주식 인사이트", "쉬운 주식 리포트"],
+        canonicalPath: "/",
+        ogImage: "/og-donut-report.svg",
+    });
 
     return (
         <main className="flex flex-col gap-10 sm:gap-12">
