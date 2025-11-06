@@ -34,8 +34,8 @@ export function HomePage(): JSX.Element {
     };
 
     return (
-        <main className="flex flex-col gap-12">
-            <Card className="relative border border-primary/20 bg-card p-10 shadow-[0_35px_80px_-35px_rgba(63,93,255,0.28)] dark:border-primary/30 dark:shadow-[0_35px_80px_-35px_rgba(63,93,255,0.35)]">
+        <main className="flex flex-col gap-10 sm:gap-12">
+            <Card className="relative border border-primary/20 bg-card p-6 shadow-[0_35px_80px_-35px_rgba(63,93,255,0.28)] dark:border-primary/30 dark:shadow-[0_35px_80px_-35px_rgba(63,93,255,0.35)] sm:p-10">
                 <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
                     <div className="space-y-6">
                         <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
