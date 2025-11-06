@@ -3,7 +3,7 @@ import { highlightCards } from '@/data/palantir';
 
 export function BusinessHighlightsSection(): JSX.Element {
   return (
-    <Card className="bg-gradient-to-br from-slate-900/70 via-slate-950/50 to-slate-900/60 p-8 shadow-2xl">
+    <Card className="bg-card p-8 shadow-lg dark:bg-slate-900/70 dark:shadow-2xl">
       <CardHeader className="space-y-2 p-0">
         <CardTitle className="text-2xl font-semibold text-foreground">
           3. 비즈니스 핵심 포인트
@@ -15,7 +15,7 @@ export function BusinessHighlightsSection(): JSX.Element {
       <CardContent className="p-0">
         <div className="grid gap-4 md:grid-cols-3">
           {highlightCards.map((card) => (
-            <article key={card.title} className="rounded-3xl border border-border/40 bg-slate-950/55 p-6 shadow-xl shadow-black/30 backdrop-blur">
+            <article key={card.title} className="rounded-3xl border border-border/40 bg-card p-6 shadow-lg dark:bg-slate-950/55 dark:shadow-xl dark:shadow-black/30">
               <div className="text-3xl drop-shadow">{card.icon}</div>
               <h3 className="mt-3 text-lg font-semibold text-foreground">{card.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.body}</p>

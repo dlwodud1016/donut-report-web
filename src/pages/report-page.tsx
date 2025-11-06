@@ -17,13 +17,13 @@ export function ReportPage(): JSX.Element {
                 <HeroSummary />
                 <TimelineSection />
                 <IntroSection />
-                <GrowthForecastSection />
+                {/* <GrowthForecastSection />
                 <DiversificationSection />
                 <EpsRoeSection />
                 <ComparablesSection />
-                <BusinessHighlightsSection />
+                <BusinessHighlightsSection /> */}
                 {/* <ActionChecklist /> */}
-                <DataStatusSection />
+                {/* <DataStatusSection /> */}
             </div>
         </div>
     );

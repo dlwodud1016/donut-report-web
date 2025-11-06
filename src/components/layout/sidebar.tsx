@@ -6,12 +6,12 @@ import { Separator } from "@/components/ui/separator";
 export function Sidebar(): JSX.Element {
     return (
         <aside className="flex flex-col gap-6">
-            <Card className="border-primary/30 bg-gradient-to-br from-slate-900/90 via-blue-900/60 to-slate-950/80 p-0 text-foreground shadow-2xl">
-                <CardHeader className="items-center gap-2 rounded-t-3xl bg-slate-950/40 p-6 text-center">
-                    <Badge className="bg-primary/30 text-primary-foreground/80">
+            <Card className="border border-primary/20 bg-card p-0 text-foreground shadow-lg dark:border-primary/30">
+                <CardHeader className="items-center gap-2 rounded-t-3xl bg-card p-6 text-center dark:bg-slate-950/40">
+                    <Badge className="bg-primary/15 text-primary dark:bg-primary/30 dark:text-primary-foreground/80">
                         성장주
                     </Badge>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/25 via-slate-950/70 to-blue-900/30 text-xl font-semibold text-emerald-100 shadow-[0_12px_24px_rgba(16,185,129,0.25)]">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/40 bg-success/10 text-xl font-semibold text-success shadow-[0_12px_24px_rgba(34,197,94,0.18)] dark:bg-success/20 dark:text-success-foreground">
                         {hero.ticker.replace("NASDAQ:", "").trim()}
                     </div>
                     <CardTitle className="text-xl text-foreground">
@@ -29,7 +29,7 @@ export function Sidebar(): JSX.Element {
                 </CardHeader>
                 <CardContent className="space-y-6 p-6">
                     <div className="grid grid-cols-2 gap-4 text-left">
-                        <div className="rounded-2xl border border-border/40 bg-slate-950/50 p-3">
+                        <div className="rounded-2xl border border-border/30 bg-muted p-3 dark:border-border/40 dark:bg-slate-950/50">
                             <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground/80">
                                 시가총액
                             </p>
@@ -37,7 +37,7 @@ export function Sidebar(): JSX.Element {
                                 $20.3B
                             </p>
                         </div>
-                        <div className="rounded-2xl border border-border/40 bg-slate-950/50 p-3">
+                        <div className="rounded-2xl border border-border/30 bg-muted p-3 dark:border-border/40 dark:bg-slate-950/50">
                             <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground/80">
                                 업데이트
                             </p>
@@ -49,7 +49,7 @@ export function Sidebar(): JSX.Element {
                 </CardContent>
             </Card>
 
-            <Card className="border-border/40 bg-slate-950/70 p-0 text-sm text-muted-foreground">
+            <Card className="border border-border/30 bg-card p-0 text-sm text-muted-foreground shadow-lg dark:border-border/40">
                 <CardHeader className="p-6 pb-4">
                     <CardTitle className="text-base text-foreground">
                         리포트 목차

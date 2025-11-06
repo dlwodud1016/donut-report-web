@@ -2,10 +2,10 @@ import { DonutIcon } from "../icons/donut-icon";
 
 export function Footer(): JSX.Element {
     return (
-        <footer className="rounded-3xl border border-border/40 bg-slate-950/60 px-10 py-12 text-sm text-muted-foreground shadow-2xl">
+        <footer className="rounded-3xl border border-border/30 bg-white/85 px-10 py-12 text-sm text-muted-foreground shadow-lg dark:border-border/40 dark:bg-slate-950/60 dark:shadow-2xl">
             <div className="flex flex-wrap items-center justify-between gap-6">
                 <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-400 text-2xl">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-secondary-foreground text-2xl dark:bg-secondary dark:text-secondary-foreground">
                         <DonutIcon className="h-full w-full" variant="glass" />
                     </div>
                     <div>

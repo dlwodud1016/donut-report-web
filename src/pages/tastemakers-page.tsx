@@ -4,12 +4,35 @@ import { RadarChart } from "@/components/charts/radar-chart";
 import { tastemakerProfiles } from "@/data/tastemakers";
 import { cn } from "@/lib/utils";
 
+const axisExplanations = [
+    {
+        label: "영향력",
+        description: "미디어 언급, 업계 인용도, 시장에 미치는 영향력 지수",
+    },
+    {
+        label: "정확성",
+        description: "발언·투자 아이디어의 실현 비율과 장기 성과 추적",
+    },
+    {
+        label: "관여도",
+        description: "SNS·커뮤니티 참여도와 팔로잉 성장률",
+    },
+    {
+        label: "투명성",
+        description: "포지션 공개, 투자 노트 공유 빈도 등 정보 개방성",
+    },
+    {
+        label: "신뢰도",
+        description: "외부 평판, 규제 리스크, 윤리성 평가",
+    },
+] as const;
+
 export function TastemakersPage(): JSX.Element {
     return (
         <div className="flex flex-col gap-8">
-            <Card className="border-primary/30 bg-gradient-to-br from-slate-900/80 via-blue-900/40 to-slate-950/70 p-8 shadow-2xl shadow-cyan-500/20">
+            <Card className="border border-primary/30 bg-card p-8 shadow-lg dark:border-primary/40 dark:bg-slate-900/80 dark:shadow-2xl">
                 <CardHeader className="gap-4">
-                    <Badge className="w-fit bg-primary/30 text-primary-foreground/80">
+                    <Badge className="w-fit bg-primary/15 text-primary">
                         트렌드 리더
                     </Badge>
                     <CardTitle className="text-3xl font-semibold text-foreground md:text-4xl">
@@ -33,62 +56,72 @@ export function TastemakersPage(): JSX.Element {
                 </CardContent>
             </Card>
 
+            <Card className="border border-border/30 bg-card p-6 shadow-md dark:border-border/40">
+                <CardHeader className="space-y-2 p-0">
+                    <CardTitle className="text-lg text-foreground">
+                        평가 기준 안내
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                        레이더 차트는 아래 다섯 개의 축을 기준으로 100점 만점으로 환산된 점수를 보여 줍니다.
+                    </p>
+                </CardHeader>
+                <CardContent className="grid gap-3 p-0 md:grid-cols-2">
+                    {axisExplanations.map((axis) => (
+                        <div
+                            key={axis.label}
+                            className="flex gap-3 rounded-2xl border border-border/40 bg-muted/60 p-4 text-sm text-muted-foreground dark:bg-slate-900/60"
+                        >
+                            <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/20 text-xs font-semibold text-accent-foreground">
+                                {axis.label.slice(0, 1)}
+                            </span>
+                            <div>
+                                <p className="font-semibold text-foreground">
+                                    {axis.label}
+                                </p>
+                                <p>{axis.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
+
             <div className="grid gap-6 xl:grid-cols-2">
                 {tastemakerProfiles.map((profile) => (
                     <Card
                         key={profile.id}
-                        className="border-border/40 bg-slate-950/70 p-6 shadow-xl shadow-black/30 backdrop-blur"
+                        className="border border-border/40 bg-card p-6 shadow-lg dark:bg-slate-950/70 dark:shadow-xl dark:shadow-black/30"
                     >
                         <div className="flex flex-col gap-6 lg:flex-row">
                             <div className="flex-1 space-y-3">
-                                <div>
-                                    <div className="flex items-center gap-3">
-                                        <h2 className="text-2xl font-semibold text-foreground">
-                                            {profile.name}
-                                        </h2>
-                                        <Badge className="bg-slate-900/60 text-[11px] uppercase tracking-[0.18em] text-muted-foreground/80">
-                                            {profile.focus}
+                                <div className="flex flex-col gap-4">
+                                    <div className="flex items-start justify-between gap-4">
+                                        <div className="flex items-center gap-4">
+                                            {profile.image ? (
+                                                <img
+                                                    src={profile.image}
+                                                    alt={`${profile.name} avatar`}
+                                                    className="h-14 w-14 rounded-xl border border-border/40 bg-muted object-cover"
+                                                />
+                                            ) : (
+                                                <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border/40 bg-muted text-lg font-semibold text-foreground">
+                                                    {profile.name.replace(/\(.*\)/, "").trim().slice(0, 2)}
+                                                </div>
+                                            )}
+                                            <div>
+                                                <h2 className="text-2xl font-semibold text-foreground">
+                                                    {profile.name}
+                                                </h2>
+                                                <p className="mt-1 text-sm text-muted-foreground">
+                                                    {profile.focus}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <Badge className="bg-secondary/15 text-secondary-foreground/90 dark:bg-secondary/25 dark:text-secondary-foreground">
+                                            최신 업데이트
                                         </Badge>
                                     </div>
-                                    <p className="mt-2 text-sm text-muted-foreground/90">
+                                    <p className="text-sm text-muted-foreground">
                                         {profile.tagline}
-                                    </p>
-                                </div>
-                                <div className="grid gap-2 text-sm text-muted-foreground/80">
-                                    <p>
-                                        <span className="font-semibold text-foreground/90">
-                                            영향력
-                                        </span>
-                                        {" · "}
-                                        업계 인용도와 시장에 미치는 영향력 지수.
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-foreground/90">
-                                            정확성
-                                        </span>
-                                        {" · "}
-                                        공개된 포트폴리오·발언의 실제 성과 추적.
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-foreground/90">
-                                            관여도
-                                        </span>
-                                        {" · "}
-                                        SNS·커뮤니티 상호작용과 팔로잉 성장률.
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-foreground/90">
-                                            투명성
-                                        </span>
-                                        {" · "}
-                                        포지션 공개, 투자 노트 공유 빈도.
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-foreground/90">
-                                            신뢰도
-                                        </span>
-                                        {" · "}
-                                        외부 평판과 규제/감독 리스크 노출도.
                                     </p>
                                 </div>
                                 <div className="space-y-3">
@@ -116,7 +149,7 @@ export function TastemakersPage(): JSX.Element {
                                         {profile.latestNews.map((news) => (
                                             <li
                                                 key={`${profile.id}-${news.title}`}
-                                                className="rounded-xl border border-border/40 bg-slate-950/60 px-4 py-3"
+                                                className="rounded-xl border border-border/40 bg-muted px-4 py-3 dark:bg-slate-950/60"
                                             >
                                                 <p className="font-medium text-foreground">
                                                     <a
@@ -136,7 +169,7 @@ export function TastemakersPage(): JSX.Element {
                             </div>
                             <Card
                                 className={cn(
-                                    "flex flex-col justify-center border border-border/40 bg-slate-950/60 shadow-inner",
+                                    "flex flex-col justify-center border border-border/40 bg-card shadow-inner dark:bg-slate-950/60",
                                     "lg:w-[260px]"
                                 )}
                             >

@@ -8,24 +8,27 @@ import { cn } from "@/lib/utils";
 
 export function GrowthForecastSection(): JSX.Element {
     const statToneClasses = {
-        positive: "border-emerald-400/40 bg-gradient-to-br from-emerald-500/20 via-slate-950/70 to-emerald-400/10",
-        neutral: "border-sky-400/40 bg-gradient-to-br from-sky-500/20 via-slate-950/70 to-sky-400/10",
-        attention: "border-amber-400/40 bg-gradient-to-br from-amber-500/20 via-slate-950/70 to-orange-400/10",
+        positive:
+            "border-success/50 bg-success/10 text-success dark:bg-success/15 dark:text-success-foreground",
+        neutral:
+            "border-info/40 bg-info/10 text-info dark:bg-info/15 dark:text-info-foreground",
+        attention:
+            "border-warning/50 bg-warning/10 text-warning dark:bg-warning/15 dark:text-warning-foreground",
     } as const;
 
     const statusClasses = {
-        pass: "bg-emerald-500/15 border-emerald-400/40 text-emerald-100",
-        attention: "bg-amber-500/15 border-amber-400/40 text-amber-100",
+        pass: "border-success/50 bg-success/10 text-success dark:bg-success/20 dark:text-success-foreground",
+        attention: "border-warning/50 bg-warning/10 text-warning dark:bg-warning/20 dark:text-warning-foreground",
     } as const;
 
     const tagClasses = {
-        실적: "border-emerald-400/40 bg-emerald-500/10 text-emerald-100",
-        제품: "border-sky-400/40 bg-sky-500/10 text-sky-100",
-        계약: "border-purple-400/40 bg-purple-500/10 text-purple-100",
+        실적: "border-success/40 bg-success/10 text-success dark:bg-success/15 dark:text-success-foreground",
+        제품: "border-info/40 bg-info/10 text-info dark:bg-info/15 dark:text-info-foreground",
+        계약: "border-secondary/40 bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-secondary-foreground",
     } as const;
 
     return (
-        <Card id="section-2-1" className="bg-slate-900/70 p-8">
+        <Card id="section-2-1" className="bg-card p-8 shadow-lg dark:bg-slate-900/70 dark:shadow-2xl">
             <CardHeader className="space-y-2 p-0">
                 <CardTitle className="text-2xl text-foreground">
                     2.1 매출이 얼마나 늘어날까?
@@ -39,7 +42,7 @@ export function GrowthForecastSection(): JSX.Element {
             <CardContent className="space-y-8 p-0">
                 <div className="grid gap-6 lg:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
                     <section className="space-y-6">
-                        <div className="rounded-3xl border border-border/50 bg-gradient-to-br from-blue-500/20 via-slate-900/50 to-emerald-400/20 p-6 shadow-inner">
+                        <div className="rounded-3xl border border-border/40 bg-muted p-6 shadow-inner dark:border-border/50 dark:bg-slate-900/40">
                             <div className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-wide text-muted-foreground">
                                 <span className="font-semibold text-foreground/90">
                                     매출 · 영업이익 전망 (FY21 ~ FY27E)
@@ -53,16 +56,15 @@ export function GrowthForecastSection(): JSX.Element {
                                     </span>
                                 </div>
                             </div>
-                            <div className="relative mt-5 h-60 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-emerald-500/10">
-                                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0)_35%)]" />
+                            <div className="relative mt-5 h-60 overflow-hidden rounded-2xl border border-border/30 bg-card">
                                 <div className="absolute inset-x-6 bottom-6 flex items-end justify-between gap-2">
                                     {[21, 22, 23, 24, 25, 26, 27].map(
                                         (year) => (
                                             <div
                                                 key={year}
-                                                className="flex w-full flex-col items-center gap-2 text-[10px] font-semibold text-slate-200/70"
+                                                className="flex w-full flex-col items-center gap-2 text-[10px] font-semibold text-muted-foreground"
                                             >
-                                                <div className="flex h-36 w-full items-end justify-between gap-1 rounded-lg bg-white/5 p-1">
+                                                <div className="flex h-36 w-full items-end justify-between gap-1 rounded-lg bg-white/80 p-1 dark:bg-white/10">
                                                     <span
                                                         className="h-full w-1/2 rounded-full bg-sky-300/80"
                                                         style={{
@@ -89,7 +91,7 @@ export function GrowthForecastSection(): JSX.Element {
                                         )
                                     )}
                                 </div>
-                                <div className="absolute inset-6 flex items-end justify-between gap-2 text-xs font-medium text-emerald-50">
+                                <div className="absolute inset-6 flex items-end justify-between gap-2 text-xs font-medium text-muted-foreground">
                                     <div className="flex-1 self-start text-right text-[11px] text-muted-foreground">
                                         실제 수치는 애널리스트 컨센서스 기반 •
                                         단위: 억 달러
@@ -107,23 +109,23 @@ export function GrowthForecastSection(): JSX.Element {
                                 <div
                                     key={stat.label}
                                     className={cn(
-                                        'rounded-3xl border px-5 py-6 shadow-lg shadow-black/30 backdrop-blur',
+                                        "rounded-3xl border px-5 py-6 shadow-lg backdrop-blur dark:shadow-black/30",
                                         statToneClasses[stat.tone]
                                     )}
                                 >
-                                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+                                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-current opacity-70 dark:text-white/70">
                                         {stat.label}
                                     </p>
-                                    <p className="mt-3 text-2xl font-semibold text-white drop-shadow">
+                                    <p className="mt-3 text-2xl font-semibold text-current dark:text-white drop-shadow-sm">
                                         {stat.value}
                                     </p>
-                                    <p className="mt-2 text-xs text-white/70">
+                                    <p className="mt-2 text-xs text-current opacity-70 dark:text-white/70">
                                         {stat.detail}
                                     </p>
                                 </div>
                             ))}
                         </div>
-                        <ul className="space-y-2 rounded-3xl border border-border/40 bg-slate-950/60 p-5 text-sm text-muted-foreground">
+                        <ul className="space-y-2 rounded-3xl border border-border/40 bg-secondary/70 p-5 text-sm text-muted-foreground dark:bg-slate-950/60">
                             <li>
                                 • FY27 컨센서스: 매출 82.5억 달러, 순이익 25.1억
                                 달러로 3년 CAGR이 각각 26.6%, 29.2%에 달합니다.
@@ -139,7 +141,7 @@ export function GrowthForecastSection(): JSX.Element {
                         </ul>
                     </section>
                     <aside className="space-y-6">
-                        <div className="rounded-3xl border border-border/40 bg-slate-950/60 p-6">
+                        <div className="rounded-3xl border border-border/40 bg-card p-6 shadow-sm dark:bg-slate-950/60">
                             <h3 className="text-lg font-semibold text-foreground">
                                 성장성 체크리스트
                             </h3>
@@ -152,19 +154,19 @@ export function GrowthForecastSection(): JSX.Element {
                                     <li
                                         key={check.label}
                                         className={cn(
-                                            "rounded-2xl border px-4 py-3 text-sm shadow-inner shadow-black/10 transition hover:shadow-lg",
+                                            "rounded-2xl border px-4 py-3 text-sm shadow-inner transition hover:shadow-lg dark:shadow-black/10",
                                             statusClasses[check.status]
                                         )}
                                     >
                                         <div className="flex items-start gap-3">
-                                            <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/50 bg-white/20 text-[10px] font-semibold uppercase tracking-[0.2em] text-white">
+                                            <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-border/60 bg-white/85 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground dark:border-white/50 dark:bg-white/20 dark:text-white">
                                                 ✓
                                             </span>
                                             <div className="space-y-1">
-                                                <p className="font-semibold text-slate-100">
+                                                <p className="font-semibold text-foreground dark:text-slate-100">
                                                     {check.label}
                                                 </p>
-                                                <p className="text-xs text-slate-100/70">
+                                                <p className="text-xs text-muted-foreground dark:text-slate-100/70">
                                                     {check.description}
                                                 </p>
                                             </div>
@@ -173,7 +175,7 @@ export function GrowthForecastSection(): JSX.Element {
                                 ))}
                             </ul>
                         </div>
-                        <div className="rounded-3xl border border-border/40 bg-slate-950/60 p-6">
+                        <div className="rounded-3xl border border-border/40 bg-card p-6 shadow-sm dark:bg-slate-950/60">
                             <h3 className="text-lg font-semibold text-foreground">
                                 최근 성장 관련 업데이트
                             </h3>
@@ -184,7 +186,7 @@ export function GrowthForecastSection(): JSX.Element {
                                 {recentGrowthUpdates.map((item) => (
                                     <article
                                         key={item.title}
-                                        className="rounded-2xl border border-border/40 bg-slate-950/70 p-4"
+                                        className="rounded-2xl border border-border/40 bg-secondary/70 p-4 dark:bg-slate-950/70"
                                     >
                                         <div className="flex items-center justify-between gap-3 text-[11px] uppercase tracking-wide text-muted-foreground">
                                             <span>{item.date}</span>

@@ -15,7 +15,7 @@ export default function App(): JSX.Element {
     }, [location.pathname]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pb-12 text-foreground">
+        <div className="min-h-screen bg-background pb-12 text-foreground">
             <div className="mx-auto flex w-full max-w-[1360px] flex-col gap-10 px-4 pt-10 md:px-6 lg:px-8">
                 <Topbar />
                 <Outlet />
