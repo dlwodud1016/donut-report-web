@@ -23,14 +23,27 @@ export type TastemakerProfile = {
     id: string;
     name: string;
     tagline: string;
-    focus: string;
+    focus: string[];
+    assets?: string;
+    assetsValue?: number;
     image?: string;
     metrics: TastemakerMetrics;
     socials: TastemakerSocialLink[];
     latestNews: TastemakerNewsItem[];
 };
 
-const makeProfile = (profile: TastemakerProfile): TastemakerProfile => profile;
+const makeProfile = (
+    profile: Omit<TastemakerProfile, "focus"> & { focus: string | string[] }
+): TastemakerProfile => ({
+    ...profile,
+    focus:
+        typeof profile.focus === "string"
+            ? profile.focus
+                  .split("·")
+                  .map((tag) => tag.trim())
+                  .filter(Boolean)
+            : profile.focus,
+});
 
 export const tastemakerProfiles: TastemakerProfile[] = [
     makeProfile({
@@ -38,6 +51,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "워렌 버핏(Warren Buffett)",
         tagline: "버크셔 해서웨이의 장기 가치 투자의 대명사",
         focus: "가치 투자 · 버크셔 해서웨이",
+        assets: "약 1,200억 달러 개인 순자산 (2025년 추정)",
+        assetsValue: 120, // USD billions (approx)
         image: "/tastemakers/warren-buffett.webp",
         metrics: {
             impact: 95,
@@ -76,6 +91,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "마이클 버리(Michael Burry)",
         tagline: "빅 쇼트의 주인공, 매크로 리스크 경고로 유명",
         focus: "매크로 숏 전략 · 사욘 자산운용",
+        assets: "Scion Asset Management 운용자산 약 3억 달러 (2024년 13F 기준)",
+        assetsValue: 0.3,
         image: "/tastemakers/michael-burry.webp",
         metrics: {
             impact: 80,
@@ -114,6 +131,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "레이 달리오(Ray Dalio)",
         tagline: "브리지워터 창업자, 빅사이클 프레임워크 제시",
         focus: "거시 올웨더 전략 · 브리지워터 어소시에이츠",
+        assets: "브리지워터 어소시에이츠 운용자산 약 1,200억 달러 (2024년)",
+        assetsValue: 120,
         image: "/tastemakers/ray-dalio.webp",
         metrics: {
             impact: 90,
@@ -152,6 +171,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "캐시 우드(Cathie Wood)",
         tagline: "ARK Invest의 혁신 기술 포트폴리오 리더",
         focus: "파괴적 혁신 투자 · ARK 인베스트",
+        assets: "ARK Invest 운용자산 약 300억 달러 (2025년 초)",
+        assetsValue: 30,
         image: "/tastemakers/cathie-wood.webp",
         metrics: {
             impact: 88,
@@ -190,6 +211,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "짐 크레이머(Jim Cramer)",
         tagline: "CNBC Mad Money 진행자, 실시간 시장 코멘터리",
         focus: "실시간 시장 코멘터리 · CNBC",
+        assets: "개인 순자산 약 1억 달러 (추정)",
+        assetsValue: 0.1,
         image: "/tastemakers/jim-cramer.jpg",
         metrics: {
             impact: 75,
@@ -228,6 +251,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "세스 클라먼(Seth Klarman)",
         tagline: "보우포스트의 가치 투자자, 위험 관리에 집중",
         focus: "가치 투자 · 보우포스트 그룹",
+        assets: "보우포스트 그룹 운용자산 약 360억 달러 (2024년)",
+        assetsValue: 36,
         image: "/tastemakers/seth-klarman.jpeg",
         metrics: {
             impact: 78,
@@ -256,6 +281,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "케네스 그리핀(Kenneth C. Griffin)",
         tagline: "시타델 창업자, 마켓 메이킹과 헤지 전략 리더",
         focus: "멀티 전략 헤지 · 시타델",
+        assets: "시타델 운용자산 약 650억 달러 (2025년)",
+        assetsValue: 65,
         image: "/tastemakers/kenneth-griffin.jpeg",
         metrics: {
             impact: 92,
@@ -294,6 +321,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "샴스 팔리하피티야(Chamath Palihapitiya)",
         tagline: "소셜캐피털 창업자, 초기 성장 투자자",
         focus: "벤처 투자 · 소셜 캐피털",
+        assets: "개인 순자산 약 12억 달러 (2024년)",
+        assetsValue: 1.2,
         image: "/tastemakers/chamath-palihapitiya.webp",
         metrics: {
             impact: 82,
@@ -332,6 +361,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "샐리 크로우첵(Sallie Krawcheck)",
         tagline: "Ellevest CEO, 여성 투자와 재무 교육 강조",
         focus: "포용적 투자 · 엘레베스트",
+        assets: "Ellevest 운용자산 약 20억 달러 (2024년)",
+        assetsValue: 2,
         image: "/tastemakers/sallie-krawcheck.webp",
         metrics: {
             impact: 74,
@@ -370,6 +401,8 @@ export const tastemakerProfiles: TastemakerProfile[] = [
         name: "이안 캐슬(Ian Cassel)",
         tagline: "MIcroCapClub 설립자, 마이크로캡 투자에 특화",
         focus: "마이크로캡 투자 · 인텔리전트 팬애틱스",
+        assets: "MicroCapClub 멤버십 포트폴리오 수억 달러 규모 (비공식 추정)",
+        assetsValue: 0.5,
         image: "/tastemakers/ian-cassel.png",
         metrics: {
             impact: 62,
