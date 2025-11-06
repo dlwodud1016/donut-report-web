@@ -24,8 +24,6 @@ export function Footer(): JSX.Element {
                         </p>
                         <ul className="mt-3 space-y-2">
                             <li>About</li>
-                            <li>채용</li>
-                            <li>Press</li>
                         </ul>
                     </div>
                     <div>
@@ -33,9 +31,7 @@ export function Footer(): JSX.Element {
                             Support
                         </p>
                         <ul className="mt-3 space-y-2">
-                            <li>FAQ</li>
                             <li>피드백 보내기</li>
-                            <li>개인정보 처리방침</li>
                         </ul>
                     </div>
                 </div>

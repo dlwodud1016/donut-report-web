@@ -10,7 +10,7 @@ export function TastemakersPage(): JSX.Element {
             <Card className="border-primary/30 bg-gradient-to-br from-slate-900/80 via-blue-900/40 to-slate-950/70 p-8 shadow-2xl shadow-cyan-500/20">
                 <CardHeader className="gap-4">
                     <Badge className="w-fit bg-primary/30 text-primary-foreground/80">
-                        테이스트메이커스
+                        트렌드 리더
                     </Badge>
                     <CardTitle className="text-3xl font-semibold text-foreground md:text-4xl">
                         인플루언서 영향력 평가 — 다섯 축으로 보는 신뢰도
@@ -134,17 +134,19 @@ export function TastemakersPage(): JSX.Element {
                                     </ul>
                                 </div>
                             </div>
-                            <div
+                            <Card
                                 className={cn(
-                                    "flex flex-col items-center justify-center rounded-3xl border border-border/40 bg-slate-950/60 p-4 shadow-inner",
+                                    "flex flex-col justify-center border border-border/40 bg-slate-950/60 shadow-inner",
                                     "lg:w-[260px]"
                                 )}
                             >
-                                <RadarChart metrics={profile.metrics} size={240} />
-                                <p className="mt-4 text-center text-xs text-muted-foreground/80">
-                                    점수는 최근 12개월 데이터를 기준으로 산출했습니다.
-                                </p>
-                            </div>
+                                <CardContent className="flex flex-col items-center gap-4 p-4">
+                                    <RadarChart metrics={profile.metrics} minHeight={240} />
+                                    <p className="text-center text-xs text-muted-foreground/80">
+                                        점수는 최근 12개월 데이터를 기준으로 산출했습니다.
+                                    </p>
+                                </CardContent>
+                            </Card>
                         </div>
                     </Card>
                 ))}

@@ -25,8 +25,8 @@ export function GrowthForecastSection(): JSX.Element {
     } as const;
 
     return (
-        <Card id="section-2-1" className="space-y-6 bg-slate-900/70 p-8">
-            <CardHeader className="space-y-2">
+        <Card id="section-2-1" className="bg-slate-900/70 p-8">
+            <CardHeader className="space-y-2 p-0">
                 <CardTitle className="text-2xl text-foreground">
                     2.1 매출이 얼마나 늘어날까?
                 </CardTitle>
@@ -36,7 +36,7 @@ export function GrowthForecastSection(): JSX.Element {
                     돌아가는 구조인지 살펴봅니다.
                 </p>
             </CardHeader>
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-8 p-0">
                 <div className="grid gap-6 lg:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
                     <section className="space-y-6">
                         <div className="rounded-3xl border border-border/50 bg-gradient-to-br from-blue-500/20 via-slate-900/50 to-emerald-400/20 p-6 shadow-inner">

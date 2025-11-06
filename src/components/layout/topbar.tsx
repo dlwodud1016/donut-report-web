@@ -54,8 +54,8 @@ export function Topbar(): JSX.Element {
                     />
                 ) : (
                     <p className="max-w-lg text-center text-sm text-muted-foreground/80">
-                        도넛 한 조각 먹는 잠깐의 시간에 읽는, 가볍고 맛있는
-                        주식 인사이트를 전해 드립니다.
+                        도넛 한 조각 먹는 잠깐의 시간에 읽는, 가볍고 맛있는 주식
+                        인사이트를 전해 드립니다.
                     </p>
                 )}
             </div>
@@ -63,8 +63,8 @@ export function Topbar(): JSX.Element {
                 {(
                     [
                         { key: "home", label: "브랜드 홈" },
-                        { key: "report", label: "팔란티어 리포트" },
-                        { key: "tastemakers", label: "Tastemakers" },
+                        { key: "report", label: "인사이트" },
+                        { key: "tastemakers", label: "트렌드 리더" },
                     ] satisfies { key: ViewKey; label: string }[]
                 ).map((item) => (
                     <Button
