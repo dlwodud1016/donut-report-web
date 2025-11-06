@@ -121,31 +121,6 @@ export function TastemakersPage(): JSX.Element {
 
             <div className="flex flex-col gap-4">
                 <Card className="border border-border/30 bg-card p-6 shadow-md dark:border-border/40">
-                    <CardHeader className="space-y-2 p-0">
-                        <CardTitle className="text-lg text-foreground">평가 기준 안내</CardTitle>
-                        <p className="text-sm text-muted-foreground">
-                            레이더 차트는 아래 다섯 개의 축을 기준으로 100점 만점으로 환산된 점수를 보여 줍니다.
-                        </p>
-                    </CardHeader>
-                    <CardContent className="grid gap-3 p-0 md:grid-cols-2">
-                        {axisExplanations.map((axis) => (
-                            <div
-                                key={axis.label}
-                                className="flex gap-3 rounded-2xl border border-border/40 bg-muted p-4 text-sm text-muted-foreground dark:bg-slate-900/60"
-                            >
-                                <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/20 text-xs font-semibold text-accent-foreground">
-                                    {axis.label.slice(0, 1)}
-                                </span>
-                                <div>
-                                    <p className="font-semibold text-foreground">{axis.label}</p>
-                                    <p>{axis.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </CardContent>
-                </Card>
-
-                <Card className="border border-border/30 bg-card p-6 shadow-md dark:border-border/40">
                     <CardHeader className="grid gap-4 p-0 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -324,6 +299,31 @@ export function TastemakersPage(): JSX.Element {
                         <p className="px-3 pb-3 pt-2 text-xs text-muted-foreground">
                             * 자산 규모: 십억 달러(USD, Billion) 단위 추정치
                         </p>
+                    </CardContent>
+                </Card>
+
+                <Card className="border border-border/30 bg-card p-6 shadow-md dark:border-border/40">
+                    <CardHeader className="space-y-2 p-0">
+                        <CardTitle className="text-lg text-foreground">평가 기준 안내</CardTitle>
+                        <p className="text-sm text-muted-foreground">
+                            레이더 차트는 아래 다섯 개의 축을 기준으로 100점 만점으로 환산된 점수를 보여 줍니다.
+                        </p>
+                    </CardHeader>
+                    <CardContent className="grid gap-3 p-0 md:grid-cols-2">
+                        {axisExplanations.map((axis) => (
+                            <div
+                                key={axis.label}
+                                className="flex gap-3 rounded-2xl border border-border/40 bg-muted p-4 text-sm text-muted-foreground dark:bg-slate-900/60"
+                            >
+                                <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/20 text-xs font-semibold text-accent-foreground">
+                                    {axis.label.slice(0, 1)}
+                                </span>
+                                <div>
+                                    <p className="font-semibold text-foreground">{axis.label}</p>
+                                    <p>{axis.description}</p>
+                                </div>
+                            </div>
+                        ))}
                     </CardContent>
                 </Card>
             </div>
