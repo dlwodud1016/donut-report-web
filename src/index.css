@@ -76,3 +76,64 @@
     @apply bg-background text-foreground antialiased;
   }
 }
+
+@layer utilities {
+  @keyframes threadWave {
+    0% {
+      transform: translateX(-10%) rotate(-2deg);
+    }
+    50% {
+      transform: translateX(10%) rotate(2deg);
+    }
+    100% {
+      transform: translateX(-10%) rotate(-2deg);
+    }
+  }
+
+  @keyframes threads-scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .threads-scroll {
+    animation: threads-scroll var(--threads-duration, 18s) linear infinite;
+  }
+
+  .threads-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    filter: blur(0.5px);
+    transform: translate3d(var(--threads-tilt-x, 0px), var(--threads-tilt-y, 0px), 0);
+    transition: transform 0.3s ease-out;
+  }
+
+  .threads-bg__line {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 1px;
+    margin-block: 12px;
+    background: linear-gradient(
+      90deg,
+      hsla(231, 90%, 70%, 0) 0%,
+      hsla(231, 90%, 70%, 0.8) 50%,
+      hsla(231, 90%, 70%, 0) 100%
+    );
+    animation: threadWave 12s ease-in-out infinite;
+  }
+
+  .threads-bg__line:nth-child(odd) {
+    background: linear-gradient(
+      90deg,
+      hsla(35, 90%, 60%, 0) 0%,
+      hsla(35, 90%, 60%, 0.7) 50%,
+      hsla(35, 90%, 60%, 0) 100%
+    );
+  }
+}

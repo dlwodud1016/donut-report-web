@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 
 import { Footer } from "@/components/layout/footer";
-import { Topbar } from "@/components/layout/topbar";
 import { Outlet, useRouterState } from "@tanstack/react-router";
 
 export default function App(): JSX.Element {
@@ -42,7 +41,6 @@ export default function App(): JSX.Element {
     return (
         <div className="min-h-screen bg-background pb-12 text-foreground">
             <div className="mx-auto flex w-full max-w-[1360px] flex-col gap-10 px-4 pt-10 md:px-6 lg:px-8">
-                <Topbar />
                 <Outlet />
                 <Footer />
             </div>
