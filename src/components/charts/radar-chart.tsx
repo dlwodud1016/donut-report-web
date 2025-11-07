@@ -27,20 +27,26 @@ const axisLabels: Record<TastemakerMetricKey, string> = {
   credibility: "신뢰도",
 }
 
-const axes: TastemakerMetricKey[] = [
-  "impact",
-  "accuracy",
-  "engagement",
-  "transparency",
-  "credibility",
+type AxisDefinition<TKey extends string> = {
+  key: TKey
+  label: string
+}
+
+const defaultAxes: AxisDefinition<TastemakerMetricKey>[] = [
+  { key: "impact", label: axisLabels.impact },
+  { key: "accuracy", label: axisLabels.accuracy },
+  { key: "engagement", label: axisLabels.engagement },
+  { key: "transparency", label: axisLabels.transparency },
+  { key: "credibility", label: axisLabels.credibility },
 ]
 
-type RadarChartProps = {
-  metrics: TastemakerMetrics
+type RadarChartProps<TKey extends string = TastemakerMetricKey> = {
+  metrics: Record<TKey, number>
   maxValue?: number
   className?: string
   minHeight?: number
   style?: CSSProperties
+  axes?: AxisDefinition<TKey>[]
 }
 
 const chartConfig: ChartConfig = {
@@ -50,21 +56,24 @@ const chartConfig: ChartConfig = {
   },
 }
 
-export const RadarChart = memo(function RadarChart({
+export const RadarChart = memo(function RadarChart<TKey extends string = TastemakerMetricKey>({
   metrics,
   maxValue = 100,
   className,
   minHeight = 240,
   style,
-}: RadarChartProps) {
+  axes,
+}: RadarChartProps<TKey>) {
+  const axisDefinitions = (axes ?? (defaultAxes as unknown as AxisDefinition<TKey>[]))
+
   const chartData = useMemo(
     () =>
-      axes.map((axis) => ({
-        axisKey: axis,
-        axisLabel: axisLabels[axis],
-        score: Math.max(0, Math.min(maxValue, metrics[axis])),
+      axisDefinitions.map(({ key, label }) => ({
+        axisKey: key,
+        axisLabel: label,
+        score: Math.max(0, Math.min(maxValue, metrics[key] ?? 0)),
       })),
-    [metrics, maxValue]
+    [axisDefinitions, metrics, maxValue]
   )
 
   return (

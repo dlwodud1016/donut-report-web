@@ -3,6 +3,7 @@ import { Router, Route, RootRoute } from "@tanstack/react-router";
 import App from "./App";
 import { HomePage } from "./components/home/home-page";
 import { ReportPage } from "./pages/report-page";
+import { CompanyDetailPage } from "./pages/company-detail-page";
 import { TastemakersPage } from "./pages/tastemakers-page";
 import { TastemakerDetailPage } from "./pages/tastemaker-detail-page";
 
@@ -22,6 +23,12 @@ const reportRoute = new Route({
     component: ReportPage,
 });
 
+const companyDetailRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: "/report/$companyId",
+    component: CompanyDetailPage,
+});
+
 const tastemakersRoute = new Route({
     getParentRoute: () => rootRoute,
     path: "/tastemakers",
@@ -34,12 +41,11 @@ const tastemakerDetailRoute = new Route({
     component: TastemakerDetailPage,
 });
 
-tastemakersRoute.addChildren([tastemakerDetailRoute]);
-
 const routeTree = rootRoute.addChildren([
     homeRoute,
     reportRoute,
-    tastemakersRoute,
+    companyDetailRoute,
+    tastemakersRoute.addChildren([tastemakerDetailRoute]),
 ]);
 
 export const router = new Router({ routeTree });

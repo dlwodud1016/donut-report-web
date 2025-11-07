@@ -1,6 +1,5 @@
 import { DonutIcon } from "@/components/icons/donut-icon";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { useTheme } from "@/components/theme/theme-provider";
@@ -51,17 +50,10 @@ export function Topbar(): JSX.Element {
                 </div>
             </div>
             <div className="flex w-full items-center justify-center gap-3 md:flex-1">
-                {currentView === "report" ? (
-                    <Input
-                        className="max-w-lg bg-secondary/40 dark:bg-slate-950/40"
-                        placeholder="회사명 또는 티커 검색"
-                    />
-                ) : (
-                    <p className="max-w-xl text-center text-sm text-muted-foreground/70 dark:text-muted-foreground/80">
-                        도넛 한 조각 먹는 잠깐의 시간에 읽는, 가볍고 맛있는 주식
-                        인사이트를 전해 드립니다.
-                    </p>
-                )}
+                <p className="max-w-xl text-center text-sm text-muted-foreground/70 dark:text-muted-foreground/80">
+                    도넛 한 조각 먹는 잠깐의 시간에 읽는, 가볍고 맛있는 주식
+                    인사이트를 전해 드립니다.
+                </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end">
                 <Toggle
@@ -73,13 +65,17 @@ export function Topbar(): JSX.Element {
                     <Sun
                         className={cn(
                             "h-4 w-4 transition",
-                            theme === "dark" ? "scale-75 opacity-35" : "text-amber-500"
+                            theme === "dark"
+                                ? "scale-75 opacity-35"
+                                : "text-amber-500"
                         )}
                     />
                     <Moon
                         className={cn(
                             "h-4 w-4 transition",
-                            theme === "light" ? "scale-75 opacity-35" : "text-sky-300"
+                            theme === "light"
+                                ? "scale-75 opacity-35"
+                                : "text-sky-300"
                         )}
                     />
                 </Toggle>
