@@ -266,10 +266,10 @@ export function ReportPage(): JSX.Element {
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p>
-                        성장력, 수익성, 안정성, 모멘텀, 밸류에이션 다섯 개의 축을
-                        Donut Grade로 정규화해 기업을 비교합니다. 숫자를 클릭하면
-                        전용 상세 페이지에서 최근 하이라이트와 뉴스까지 확인할 수
-                        있어요.
+                        성장력, 수익성, 안정성, 모멘텀, 밸류에이션, 혁신성, 주주가치
+                        일곱 개의 축을 Donut Grade로 정규화해 기업을 비교합니다. 숫자를
+                        클릭하면 전용 상세 페이지에서 최근 하이라이트와 뉴스까지 확인할
+                        수 있어요.
                     </p>
                 </CardContent>
             </Card>
@@ -368,14 +368,14 @@ export function ReportPage(): JSX.Element {
             <Card className="border border-border/30 bg-card p-6 dark:border-border/40">
                 <CardHeader className="space-y-2 p-0">
                     <CardTitle className="text-lg text-foreground">
-                        Donut Grade 다섯 축 가이드
+                        Donut Grade 일곱 축 가이드
                     </CardTitle>
                     <p className="text-sm text-muted-foreground">
-                        성장력, 수익성, 안정성, 모멘텀, 밸류/리스크가 어떻게 정의되는지
-                        이해하면 점수를 더 빠르게 해석할 수 있습니다.
+                        성장력부터 혁신성, 주주가치까지 핵심 축이 어떻게 정의되는지 이해하면 점수를 더 빠르게
+                        해석할 수 있습니다.
                     </p>
                 </CardHeader>
-                <CardContent className="grid gap-3 p-0 md:grid-cols-2 lg:grid-cols-5">
+                <CardContent className="grid gap-3 p-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {companyMetricExplanations.map((item) => (
                         <div
                             key={item.key}

@@ -6,6 +6,8 @@ export const companyMetricKeys: readonly CompanyMetricKey[] = [
     "stability",
     "momentum",
     "valuation",
+    "innovation",
+    "investorReturn",
 ] as const;
 
 export const companyMetricExplanations: ReadonlyArray<{
@@ -49,14 +51,30 @@ export const companyMetricExplanations: ReadonlyArray<{
         description:
             "PER, EV/EBITDA, Rule of 40, PEG 등 현재 가격에 반영된 기대와 리스크를 점검합니다.",
     },
+    {
+        key: "innovation",
+        label: "Innovation Pulse",
+        title: "혁신성",
+        description:
+            "R&D 투자, 제품 출시 속도, 데이터·AI 역량을 기준으로 시장 재편 가능성을 평가합니다.",
+    },
+    {
+        key: "investorReturn",
+        label: "Investor Return Discipline",
+        title: "주주가치",
+        description:
+            "현금흐름, 배당·자사주, 성장 대비 수익률을 반영해 주주 환원 역량을 살펴봅니다.",
+    },
 ];
 
 const companyMetricWeights: Record<CompanyMetricKey, number> = {
-    growth: 0.22,
-    profitability: 0.2,
-    stability: 0.18,
-    momentum: 0.22,
-    valuation: 0.18,
+    growth: 0.18,
+    profitability: 0.17,
+    stability: 0.15,
+    momentum: 0.18,
+    valuation: 0.12,
+    innovation: 0.1,
+    investorReturn: 0.1,
 };
 
 const sigmoid = (value: number): number => 1 / (1 + Math.exp(-value));
@@ -81,6 +99,10 @@ export function translateCompanyMetric(metric: CompanyMetricKey): string {
             return "모멘텀";
         case "valuation":
             return "밸류에이션";
+        case "innovation":
+            return "혁신성";
+        case "investorReturn":
+            return "주주가치";
         default:
             return metric;
     }
