@@ -300,7 +300,54 @@ export function ReportPage(): JSX.Element {
                     </Select>
                 </CardHeader>
                 <CardContent className="p-0">
-                    <div className="overflow-x-auto">
+                    <div className="space-y-4 sm:hidden">
+                        {filteredInsights.length === 0 ? (
+                            <p className="py-6 text-center text-sm text-muted-foreground">
+                                조건에 맞는 기업을 찾을 수 없습니다.
+                            </p>
+                        ) : (
+                            filteredInsights.map((company) => (
+                                <button
+                                    key={company.id}
+                                    type="button"
+                                    onClick={() =>
+                                        navigate({
+                                            to: "/report/$companyId",
+                                            params: { companyId: company.id },
+                                        })
+                                    }
+                                    className="w-full rounded-2xl border border-border/40 bg-muted/80 p-4 text-left shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                >
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div>
+                                            <p className="text-base font-semibold text-foreground">
+                                                {company.name}
+                                            </p>
+                                            <p className="text-xs text-muted-foreground">{company.brandLabel}</p>
+                                        </div>
+                                        <span className="text-sm font-semibold text-primary">
+                                            {computeCompanyDonutGrade(company).toFixed(1)}
+                                        </span>
+                                    </div>
+                                    <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
+                                        {company.industry}
+                                    </p>
+                                    <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-muted-foreground">
+                                        {companyMetricKeys.map((key) => (
+                                            <div key={key} className="flex items-center justify-between gap-2 rounded-xl border border-border/30 bg-background/40 px-3 py-2">
+                                                <span>{translateCompanyMetric(key)}</span>
+                                                <span className="font-semibold text-foreground">
+                                                    {company.metrics[key]}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </button>
+                            ))
+                        )}
+                    </div>
+
+                    <div className="hidden overflow-x-auto sm:block">
                         <Table>
                             <TableHeader>
                                 {table.getHeaderGroups().map((headerGroup) => (
