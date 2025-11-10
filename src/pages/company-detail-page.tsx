@@ -146,9 +146,21 @@ export function CompanyDetailPage(): JSX.Element {
                                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
                                     {company.industry}
                                 </p>
-                                <h1 className="text-4xl font-semibold text-foreground">
-                                    {`${company.koreanName} (${company.name})`}
-                                </h1>
+                                <div className="flex items-center gap-4">
+                                    <img
+                                        src={company.logoUrl}
+                                        alt={`${company.name} logo`}
+                                        className="h-16 w-16 object-contain"
+                                    />
+                                    <div>
+                                        <h1 className="text-4xl font-semibold text-foreground">
+                                            {company.koreanName}
+                                        </h1>
+                                        <p className="text-lg text-muted-foreground">
+                                            {company.name}
+                                        </p>
+                                    </div>
+                                </div>
                                 <p className="text-base leading-relaxed text-muted-foreground">
                                     {company.summary}
                                 </p>

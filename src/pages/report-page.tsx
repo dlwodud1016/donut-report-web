@@ -91,6 +91,25 @@ export function ReportPage(): JSX.Element {
     >(
         () => [
             {
+                id: "logo",
+                accessorFn: (row) => row.logoUrl,
+                header: () => "", // Empty header
+                cell: ({ row }) => {
+                    const company = row.original;
+                    return (
+                        <img
+                            src={company.logoUrl}
+                            alt={`${company.name} logo`}
+                            className="h-8 w-8 object-contain" // Adjust size as needed
+                        />
+                    );
+                },
+                meta: {
+                    headerClassName: "w-[40px]", // Adjust width as needed
+                    cellClassName: "align-middle",
+                } satisfies TableColumnMeta,
+            },
+            {
                 id: "koreanName",
                 accessorFn: (row) => row.koreanName,
                 header: ({ column }) => (

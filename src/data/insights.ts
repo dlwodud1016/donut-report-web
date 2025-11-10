@@ -33,6 +33,7 @@ export type CompanyInsight = {
     name: string;
     koreanName: string;
     brandLabel: string;
+    logoUrl?: string;
     industry: string;
     ticker: string;
     summary: string;
@@ -51,6 +52,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Palantir Technologies",
         koreanName: "팔란티어 테크놀로지스",
         brandLabel: "데이터·AI 플랫폼",
+        logoUrl: "/companies/palantir.jpeg",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NYSE: PLTR",
         summary:
@@ -131,6 +133,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Snowflake",
         koreanName: "스노우플레이크",
         brandLabel: "데이터 클라우드",
+        logoUrl: "/companies/snowflake.png",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: SNOW",
         summary:
@@ -211,6 +214,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "CrowdStrike",
         koreanName: "크라우드스트라이크",
         brandLabel: "사이버 보안 플랫폼",
+        logoUrl: "/companies/crowdstrike.png",
         industry: "사이버 보안 · 미국 나스닥",
         ticker: "NASDAQ: CRWD",
         summary:
@@ -291,6 +295,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Cisco Systems",
         koreanName: "시스코 시스템즈",
         brandLabel: "AI 네트워킹 스택",
+        logoUrl: "/companies/cisco.jpeg",
         industry: "통신장비 · 미국 나스닥",
         ticker: "NASDAQ: CSCO",
         summary:
@@ -311,7 +316,8 @@ export const companyInsights: CompanyInsight[] = [
             {
                 label: "AI 스위치 백로그",
                 value: "150억 달러",
-                context: "Hyperscaler 수주가 4분기 연속 증가하며 기록적인 수주잔고 확보",
+                context:
+                    "Hyperscaler 수주가 4분기 연속 증가하며 기록적인 수주잔고 확보",
                 tone: "positive",
             },
             {
@@ -342,11 +348,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "실리콘원 기반 AI 패브릭",
-                description: "400G/800G 스위치와 광 모듈을 번들링해 고객당 TCV를 확대 중입니다.",
+                description:
+                    "400G/800G 스위치와 광 모듈을 번들링해 고객당 TCV를 확대 중입니다.",
             },
             {
                 title: "서비스형 네트워크",
-                description: "ThousandEyes·Meraki 등 구독 매출이 반복 수익 비중을 끌어올립니다.",
+                description:
+                    "ThousandEyes·Meraki 등 구독 매출이 반복 수익 비중을 끌어올립니다.",
             },
         ],
         latestNews: [
@@ -369,6 +377,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Cadence Design Systems",
         koreanName: "케이던스 디자인 시스템즈",
         brandLabel: "EDA · 시스템 IP",
+        logoUrl: "/companies/cadence.jpeg",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NASDAQ: CDNS",
         summary:
@@ -420,11 +429,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "AI 팩토리 설계툴 표준화",
-                description: "고객 워크로드별 최적화된 전력·열 설계를 가속합니다.",
+                description:
+                    "고객 워크로드별 최적화된 전력·열 설계를 가속합니다.",
             },
             {
                 title: "IP + 클라우드 번들",
-                description: "보드·패키지까지 포함한 설계 SaaS로 ARPU를 높이고 있습니다.",
+                description:
+                    "보드·패키지까지 포함한 설계 SaaS로 ARPU를 높이고 있습니다.",
             },
         ],
         latestNews: [
@@ -447,6 +458,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Vertiv Holdings",
         koreanName: "버티브 홀딩스",
         brandLabel: "데이터센터 전력·냉각",
+        logoUrl: "/companies/vertiv.jpeg",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: VRT",
         summary:
@@ -498,11 +510,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "AI 팩토리 파워트레인",
-                description: "고효율 전력 모듈과 UPS로 전체 시스템 전력 효율을 높입니다.",
+                description:
+                    "고효율 전력 모듈과 UPS로 전체 시스템 전력 효율을 높입니다.",
             },
             {
                 title: "서비스 매출 확대",
-                description: "냉각·전력 유지보수 계약이 반복 매출을 키우고 있습니다.",
+                description:
+                    "냉각·전력 유지보수 계약이 반복 매출을 키우고 있습니다.",
             },
         ],
         latestNews: [
@@ -525,6 +539,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Hewlett Packard Enterprise",
         koreanName: "휴렛 팩커드 엔터프라이즈",
         brandLabel: "하이브리드 클라우드 & HPC",
+        logoUrl: "/companies/hpe.png",
         industry: "IT 인프라 · 뉴욕증권거래소",
         ticker: "NYSE: HPE",
         summary:
@@ -576,11 +591,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "AI 슈퍼컴 레퍼런스",
-                description: "Cray EX, Frontier 후속 대형 슈퍼컴 수주 경험을 AI 워크로드에 이식합니다.",
+                description:
+                    "Cray EX, Frontier 후속 대형 슈퍼컴 수주 경험을 AI 워크로드에 이식합니다.",
             },
             {
                 title: "서비스형 인프라",
-                description: "GreenLake로 온·오프프리미스 인프라를 하나의 구독으로 묶어 제공합니다.",
+                description:
+                    "GreenLake로 온·오프프리미스 인프라를 하나의 구독으로 묶어 제공합니다.",
             },
         ],
         latestNews: [
@@ -603,6 +620,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Uber Technologies",
         koreanName: "우버 테크놀로지스",
         brandLabel: "모빌리티 · 배달 슈퍼앱",
+        logoUrl: "/companies/uber.jpeg",
         industry: "모빌리티 · 미국 뉴욕증권거래소",
         ticker: "NYSE: UBER",
         summary:
@@ -654,7 +672,8 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "수요·공급 매칭 알고리즘",
-                description: "AI 배차가 대기 시간을 단축해 고객 충성도를 높입니다.",
+                description:
+                    "AI 배차가 대기 시간을 단축해 고객 충성도를 높입니다.",
             },
             {
                 title: "수익성 중심 성장",
@@ -681,6 +700,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Stellantis",
         koreanName: "스텔란티스",
         brandLabel: "소프트웨어 정의 OEM",
+        logoUrl: "/companies/stellantis.png",
         industry: "자동차 · 유로넥스트",
         ticker: "NYSE: STLA",
         summary:
@@ -732,11 +752,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "STLA Brain 플랫폼",
-                description: "차량 내 OTA·앱 스토어로 데이터 수익화를 노립니다.",
+                description:
+                    "차량 내 OTA·앱 스토어로 데이터 수익화를 노립니다.",
             },
             {
                 title: "모듈형 EV 라인업",
-                description: "다양한 세그먼트를 한 배터리/모터 플랫폼으로 커버합니다.",
+                description:
+                    "다양한 세그먼트를 한 배터리/모터 플랫폼으로 커버합니다.",
             },
         ],
         latestNews: [
@@ -759,6 +781,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Lucid Group",
         koreanName: "루시드 그룹",
         brandLabel: "프리미엄 EV",
+        logoUrl: "/companies/lucid.png",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: LCID",
         summary:
@@ -810,11 +833,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "고효율 파워트레인 외부 판매",
-                description: "모터·배터리 시스템을 타 OEM에 공급해 추가 수익원을 만듭니다.",
+                description:
+                    "모터·배터리 시스템을 타 OEM에 공급해 추가 수익원을 만듭니다.",
             },
             {
                 title: "사우디 조인트 팩토리",
-                description: "중동 럭셔리 EV 수요를 선점하기 위해 현지 생산을 확대합니다.",
+                description:
+                    "중동 럭셔리 EV 수요를 선점하기 위해 현지 생산을 확대합니다.",
             },
         ],
         latestNews: [
@@ -837,6 +862,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Tesla",
         koreanName: "테슬라",
         brandLabel: "AI 제조 · 에너지",
+        logoUrl: "/companies/tesla.png",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: TSLA",
         summary:
@@ -888,11 +914,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "Dojo & 로보택시",
-                description: "자체 학습 클러스터로 FSD 데이터 루프를 가속하고 로보택시 상용화를 준비합니다.",
+                description:
+                    "자체 학습 클러스터로 FSD 데이터 루프를 가속하고 로보택시 상용화를 준비합니다.",
             },
             {
                 title: "기가팩토리 확장",
-                description: "멕시코·인도 공장 계획으로 지역 다변화와 비용 절감을 추진합니다.",
+                description:
+                    "멕시코·인도 공장 계획으로 지역 다변화와 비용 절감을 추진합니다.",
             },
         ],
         latestNews: [
@@ -915,6 +943,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "IonQ",
         koreanName: "아이온큐",
         brandLabel: "트랩드 이온 양자 클라우드",
+        logoUrl: "/companies/ionq.png",
         industry: "양자컴퓨팅 · 미국 뉴욕증권거래소",
         ticker: "NYSE: IONQ",
         summary:
@@ -966,7 +995,8 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "양자 + AI 결합",
-                description: "재료 탐색·물류 최적화 PoC를 통해 초기 레퍼런스를 확보했습니다.",
+                description:
+                    "재료 탐색·물류 최적화 PoC를 통해 초기 레퍼런스를 확보했습니다.",
             },
             {
                 title: "Fabless 운영 모델",
@@ -993,6 +1023,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Rigetti Computing",
         koreanName: "리게티 컴퓨팅",
         brandLabel: "초전도 양자 서비스",
+        logoUrl: "/companies/rigetti.jpeg",
         industry: "양자컴퓨팅 · 미국 나스닥",
         ticker: "NASDAQ: RGTI",
         summary:
@@ -1044,11 +1075,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "모듈형 초전도 칩",
-                description: "큐비트 칩을 다층 패키지로 연결해 확장성을 높입니다.",
+                description:
+                    "큐비트 칩을 다층 패키지로 연결해 확장성을 높입니다.",
             },
             {
                 title: "정부 파트너십",
-                description: "국가 연구소와 공동 개발을 통해 수주 파이프라인을 확보합니다.",
+                description:
+                    "국가 연구소와 공동 개발을 통해 수주 파이프라인을 확보합니다.",
             },
         ],
         latestNews: [
@@ -1071,6 +1104,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Keysight Technologies",
         koreanName: "키사이트 테크놀로지스",
         brandLabel: "차세대 계측 · 양자 테스트",
+        logoUrl: "/companies/keysight.png",
         industry: "테스트계측 · 미국 뉴욕증권거래소",
         ticker: "NYSE: KEYS",
         summary:
@@ -1122,11 +1156,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "6G 레퍼런스 플랫폼",
-                description: "테라헤르츠 대역 테스트 솔루션으로 조기 표준화를 주도합니다.",
+                description:
+                    "테라헤르츠 대역 테스트 솔루션으로 조기 표준화를 주도합니다.",
             },
             {
                 title: "양자 측정 턴키",
-                description: "양자 스타트업용 원스톱 측정 장비 공급으로 잠재 고객을 묶습니다.",
+                description:
+                    "양자 스타트업용 원스톱 측정 장비 공급으로 잠재 고객을 묶습니다.",
             },
         ],
         latestNews: [
@@ -1149,6 +1185,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Eli Lilly and Company",
         koreanName: "일라이 릴리 앤드 컴퍼니",
         brandLabel: "대사·면역 바이오파마",
+        logoUrl: "/companies/eli-lilly.png",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: LLY",
         summary:
@@ -1200,11 +1237,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "비만 치료제 선두",
-                description: "공급망 투자로 경쟁사 대비 가용 물량을 확대합니다.",
+                description:
+                    "공급망 투자로 경쟁사 대비 가용 물량을 확대합니다.",
             },
             {
                 title: "디지털 세일즈",
-                description: "원격 처방 플랫폼과 연계해 처방 확장을 가속화합니다.",
+                description:
+                    "원격 처방 플랫폼과 연계해 처방 확장을 가속화합니다.",
             },
         ],
         latestNews: [
@@ -1227,6 +1266,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Johnson & Johnson",
         koreanName: "존슨앤드존슨",
         brandLabel: "글로벌 헬스케어",
+        logoUrl: "/companies/johnson-johnson.png",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: JNJ",
         summary:
@@ -1282,7 +1322,8 @@ export const companyInsights: CompanyInsight[] = [
             },
             {
                 title: "면역·종양 포트폴리오",
-                description: "Blockbuster 약물 수명을 연장할 바이오시밀러 방어 전략을 전개 중입니다.",
+                description:
+                    "Blockbuster 약물 수명을 연장할 바이오시밀러 방어 전략을 전개 중입니다.",
             },
         ],
         latestNews: [
@@ -1305,6 +1346,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Novo Nordisk",
         koreanName: "노보 노디스크",
         brandLabel: "대사질환 바이오",
+        logoUrl: "/companies/novo-nordisk.jpeg",
         industry: "제약 · 덴마크 코펜하겐",
         ticker: "NYSE: NVO",
         summary:
@@ -1356,7 +1398,8 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "글로벌 생산 허브",
-                description: "미·덴마크·프랑스에 걸친 자동화를 통해 병목을 해소합니다.",
+                description:
+                    "미·덴마크·프랑스에 걸친 자동화를 통해 병목을 해소합니다.",
             },
             {
                 title: "디지털 처방 파트너십",
@@ -1383,6 +1426,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Oracle",
         koreanName: "오라클",
         brandLabel: "클라우드 · 슈퍼컴퓨팅",
+        logoUrl: "/companies/oracle.png",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: ORCL",
         summary:
@@ -1434,11 +1478,13 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "서비스형 슈퍼컴",
-                description: "고성능 컴퓨팅을 구독 모델로 제공해 초기 CAPEX를 낮춥니다.",
+                description:
+                    "고성능 컴퓨팅을 구독 모델로 제공해 초기 CAPEX를 낮춥니다.",
             },
             {
                 title: "산업 데이터 클라우드",
-                description: "Cerner EHR와 NetSuite 데이터를 결합해 수직 특화 AI를 제공합니다.",
+                description:
+                    "Cerner EHR와 NetSuite 데이터를 결합해 수직 특화 AI를 제공합니다.",
             },
         ],
         latestNews: [
@@ -1461,6 +1507,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Caterpillar",
         koreanName: "캐터필러",
         brandLabel: "자율 건설 로봇",
+        logoUrl: "/companies/caterpillar.png",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: CAT",
         summary:
@@ -1512,7 +1559,8 @@ export const companyInsights: CompanyInsight[] = [
         highlights: [
             {
                 title: "자율 굴삭 솔루션",
-                description: "센서+소프트웨어 번들로 건설 현장의 인력 부족을 해소합니다.",
+                description:
+                    "센서+소프트웨어 번들로 건설 현장의 인력 부족을 해소합니다.",
             },
             {
                 title: "서비스 구독화",
@@ -1539,6 +1587,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Belden",
         koreanName: "벨덴",
         brandLabel: "산업 네트워킹 · 로보틱스",
+        logoUrl: "/companies/belden.jpeg",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: BDC",
         summary:
@@ -1594,7 +1643,8 @@ export const companyInsights: CompanyInsight[] = [
             },
             {
                 title: "OT 보안 플랫폼",
-                description: "네트워크 장비와 보안을 번들링해 고객 락인을 강화합니다.",
+                description:
+                    "네트워크 장비와 보안을 번들링해 고객 락인을 강화합니다.",
             },
         ],
         latestNews: [
@@ -1617,6 +1667,7 @@ export const companyInsights: CompanyInsight[] = [
         name: "Nokia",
         koreanName: "노키아",
         brandLabel: "6G 네트워크 장비",
+        logoUrl: "/companies/nokia.jpeg",
         industry: "통신장비 · 핀란드 헬싱키",
         ticker: "NYSE: NOK",
         summary:
@@ -1672,7 +1723,8 @@ export const companyInsights: CompanyInsight[] = [
             },
             {
                 title: "산업용 사설망",
-                description: "공장·항만용 5G/6G 프라이빗 네트워크로 반복 매출 확보.",
+                description:
+                    "공장·항만용 5G/6G 프라이빗 네트워크로 반복 매출 확보.",
             },
         ],
         latestNews: [
