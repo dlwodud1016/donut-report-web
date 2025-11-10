@@ -33,7 +33,7 @@ export default function App(): JSX.Element {
                 window.scrollTo({ top: savedPosition, behavior: "auto" });
             });
         } else {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "auto" });
         }
 
         previousPathRef.current = location.pathname;
