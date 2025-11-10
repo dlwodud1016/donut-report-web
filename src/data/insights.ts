@@ -34,6 +34,7 @@ export type CompanyInsight = {
     koreanName: string;
     brandLabel: string;
     logoUrl?: string;
+    homepageUrl?: string; // Added homepageUrl field
     industry: string;
     ticker: string;
     summary: string;
@@ -53,6 +54,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "팔란티어 테크놀로지스",
         brandLabel: "데이터·AI 플랫폼",
         logoUrl: "/companies/palantir.jpeg",
+        homepageUrl: "https://www.palantir.com/",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NYSE: PLTR",
         summary:
@@ -134,6 +136,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "스노우플레이크",
         brandLabel: "데이터 클라우드",
         logoUrl: "/companies/snowflake.png",
+        homepageUrl: "https://www.snowflake.com/",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: SNOW",
         summary:
@@ -215,6 +218,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "크라우드스트라이크",
         brandLabel: "사이버 보안 플랫폼",
         logoUrl: "/companies/crowdstrike.png",
+        homepageUrl: "https://www.crowdstrike.com/",
         industry: "사이버 보안 · 미국 나스닥",
         ticker: "NASDAQ: CRWD",
         summary:
@@ -296,6 +300,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "시스코 시스템즈",
         brandLabel: "AI 네트워킹 스택",
         logoUrl: "/companies/cisco.jpeg",
+        homepageUrl: "https://www.cisco.com/",
         industry: "통신장비 · 미국 나스닥",
         ticker: "NASDAQ: CSCO",
         summary:
@@ -378,6 +383,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "케이던스 디자인 시스템즈",
         brandLabel: "EDA · 시스템 IP",
         logoUrl: "/companies/cadence.jpeg",
+        homepageUrl: "https://www.cadence.com/",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NASDAQ: CDNS",
         summary:
@@ -459,6 +465,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "버티브 홀딩스",
         brandLabel: "데이터센터 전력·냉각",
         logoUrl: "/companies/vertiv.jpeg",
+        homepageUrl: "https://www.vertiv.com/",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: VRT",
         summary:
@@ -540,6 +547,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "휴렛 팩커드 엔터프라이즈",
         brandLabel: "하이브리드 클라우드 & HPC",
         logoUrl: "/companies/hpe.png",
+        homepageUrl: "https://www.hpe.com/",
         industry: "IT 인프라 · 뉴욕증권거래소",
         ticker: "NYSE: HPE",
         summary:
@@ -621,6 +629,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "우버 테크놀로지스",
         brandLabel: "모빌리티 · 배달 슈퍼앱",
         logoUrl: "/companies/uber.jpeg",
+        homepageUrl: "https://www.uber.com/",
         industry: "모빌리티 · 미국 뉴욕증권거래소",
         ticker: "NYSE: UBER",
         summary:
@@ -701,6 +710,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "스텔란티스",
         brandLabel: "소프트웨어 정의 OEM",
         logoUrl: "/companies/stellantis.png",
+        homepageUrl: "https://www.stellantis.com/",
         industry: "자동차 · 유로넥스트",
         ticker: "NYSE: STLA",
         summary:
@@ -782,6 +792,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "루시드 그룹",
         brandLabel: "프리미엄 EV",
         logoUrl: "/companies/lucid.png",
+        homepageUrl: "https://www.lucidmotors.com/",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: LCID",
         summary:
@@ -863,6 +874,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "테슬라",
         brandLabel: "AI 제조 · 에너지",
         logoUrl: "/companies/tesla.png",
+        homepageUrl: "https://www.tesla.com/",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: TSLA",
         summary:
@@ -944,6 +956,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "아이온큐",
         brandLabel: "트랩드 이온 양자 클라우드",
         logoUrl: "/companies/ionq.png",
+        homepageUrl: "https://ionq.com/",
         industry: "양자컴퓨팅 · 미국 뉴욕증권거래소",
         ticker: "NYSE: IONQ",
         summary:
@@ -1024,6 +1037,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "리게티 컴퓨팅",
         brandLabel: "초전도 양자 서비스",
         logoUrl: "/companies/rigetti.jpeg",
+        homepageUrl: "https://www.rigetti.com/",
         industry: "양자컴퓨팅 · 미국 나스닥",
         ticker: "NASDAQ: RGTI",
         summary:
@@ -1105,6 +1119,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "키사이트 테크놀로지스",
         brandLabel: "차세대 계측 · 양자 테스트",
         logoUrl: "/companies/keysight.png",
+        homepageUrl: "https://www.keysight.com/",
         industry: "테스트계측 · 미국 뉴욕증권거래소",
         ticker: "NYSE: KEYS",
         summary:
@@ -1186,6 +1201,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "일라이 릴리 앤드 컴퍼니",
         brandLabel: "대사·면역 바이오파마",
         logoUrl: "/companies/eli-lilly.png",
+        homepageUrl: "https://www.lilly.com/",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: LLY",
         summary:
@@ -1267,6 +1283,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "존슨앤드존슨",
         brandLabel: "글로벌 헬스케어",
         logoUrl: "/companies/johnson-johnson.png",
+        homepageUrl: "https://www.jnj.com/",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: JNJ",
         summary:
@@ -1347,6 +1364,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "노보 노디스크",
         brandLabel: "대사질환 바이오",
         logoUrl: "/companies/novo-nordisk.jpeg",
+        homepageUrl: "https://www.novonordisk.com/",
         industry: "제약 · 덴마크 코펜하겐",
         ticker: "NYSE: NVO",
         summary:
@@ -1427,6 +1445,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "오라클",
         brandLabel: "클라우드 · 슈퍼컴퓨팅",
         logoUrl: "/companies/oracle.png",
+        homepageUrl: "https://www.oracle.com/",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: ORCL",
         summary:
@@ -1508,6 +1527,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "캐터필러",
         brandLabel: "자율 건설 로봇",
         logoUrl: "/companies/caterpillar.png",
+        homepageUrl: "https://www.cat.com/",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: CAT",
         summary:
@@ -1588,6 +1608,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "벨덴",
         brandLabel: "산업 네트워킹 · 로보틱스",
         logoUrl: "/companies/belden.jpeg",
+        homepageUrl: "https://www.belden.com/",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: BDC",
         summary:
@@ -1668,6 +1689,7 @@ export const companyInsights: CompanyInsight[] = [
         koreanName: "노키아",
         brandLabel: "6G 네트워크 장비",
         logoUrl: "/companies/nokia.jpeg",
+        homepageUrl: "https://www.nokia.com/",
         industry: "통신장비 · 핀란드 헬싱키",
         ticker: "NYSE: NOK",
         summary:

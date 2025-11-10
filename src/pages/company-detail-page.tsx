@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
 
+import { ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -159,6 +160,17 @@ export function CompanyDetailPage(): JSX.Element {
                                         <p className="text-lg text-muted-foreground">
                                             {company.name}
                                         </p>
+                                        {company.homepageUrl && (
+                                            <a
+                                                href={company.homepageUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-1 text-sm text-blue-500 hover:underline dark:text-blue-400"
+                                            >
+                                                홈페이지
+                                                <ExternalLink className="h-3 w-3" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                                 <p className="text-base leading-relaxed text-muted-foreground">
