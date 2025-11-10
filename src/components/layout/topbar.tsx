@@ -17,16 +17,11 @@ export function TopBar(): JSX.Element {
             <div
                 className="flex cursor-pointer items-center gap-2 text-lg font-semibold text-foreground"
                 onClick={() => navigate({ to: "/" })}
-                onKeyDown={(e) =>
-                    e.key === "Enter" && navigate({ to: "/" })
-                }
+                onKeyDown={(e) => e.key === "Enter" && navigate({ to: "/" })}
                 role="button"
                 tabIndex={0}
             >
-                <DonutIcon
-                    className="h-8 w-8 text-primary"
-                    variant="glass"
-                />
+                <DonutIcon className="h-8 w-8 text-primary" variant="glass" />
                 Donut Report
             </div>
             <nav className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -42,13 +37,6 @@ export function TopBar(): JSX.Element {
                 ))}
             </nav>
             <div className="flex items-center gap-2">
-                <Button
-                    variant="outline"
-                    className="border-border/60 text-sm text-muted-foreground"
-                    onClick={() => navigate({ to: "/report" })}
-                >
-                    로그인
-                </Button>
                 <ModeToggle />
             </div>
         </header>

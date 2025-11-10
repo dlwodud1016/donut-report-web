@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { companyInsights } from "@/data/insights";
@@ -14,6 +15,7 @@ type SearchResult = {
     description: string;
     route: string;
     type: "company" | "tastemaker";
+    logoUrl?: string;
 };
 
 export function HomePage(): JSX.Element {
@@ -54,6 +56,7 @@ export function HomePage(): JSX.Element {
                 description: company.ticker,
                 route: `/report/${company.id}`,
                 type: "company" as const,
+                logoUrl: company.logoUrl,
             }));
 
         const tastemakerMatches = tastemakerProfiles
@@ -70,6 +73,7 @@ export function HomePage(): JSX.Element {
                 description: profile.tagline,
                 route: `/tastemakers/${profile.id}`,
                 type: "tastemaker" as const,
+                logoUrl: profile.image,
             }));
 
         return [...companyMatches, ...tastemakerMatches].slice(0, 6);
@@ -95,9 +99,9 @@ export function HomePage(): JSX.Element {
                         Search. Taste. Decide.
                     </h1>
                     <p className="max-w-2xl text-sm text-muted-foreground">
-                        Type a company, ticker, or tastemaker and jump
-                        straight to the story behind the numbers. Pure
-                        signal, zero clutter—Donut Report’s way.
+                        Type a company, ticker, or tastemaker and jump straight
+                        to the story behind the numbers. Pure signal, zero
+                        clutter—Donut Report’s way.
                     </p>
                 </div>
 
@@ -126,8 +130,7 @@ export function HomePage(): JSX.Element {
                     <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1 text-sm">
                         {searchTerm.length === 0 ? (
                             <p className="py-4 text-center text-muted-foreground">
-                                Palantir, SNOW, 워렌 버핏 등을 입력해
-                                보세요.
+                                Palantir, SNOW, 워렌 버핏 등을 입력해 보세요.
                             </p>
                         ) : searchResults.length === 0 ? (
                             <p className="py-4 text-center text-muted-foreground">
@@ -141,13 +144,23 @@ export function HomePage(): JSX.Element {
                                     onClick={() => handleSelect(result)}
                                     className="flex w-full items-center justify-between rounded-full border border-border/30 bg-background/70 px-5 py-2 text-left transition hover:border-primary/40 hover:bg-background/90 dark:bg-slate-900/60"
                                 >
-                                    <span>
-                                        <p className="text-sm font-semibold text-foreground">
-                                            {result.label}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground">
-                                            {result.description}
-                                        </p>
+                                    <span className="flex items-center gap-3">
+                                        {result.logoUrl && (
+                                            <Avatar className="h-7 w-7">
+                                                <AvatarImage
+                                                    src={result.logoUrl}
+                                                    alt={result.label}
+                                                />
+                                            </Avatar>
+                                        )}
+                                        <span>
+                                            <p className="text-sm font-semibold text-foreground">
+                                                {result.label}
+                                            </p>
+                                            <p className="text-xs text-muted-foreground">
+                                                {result.description}
+                                            </p>
+                                        </span>
                                     </span>
                                     <span className="text-[10px] uppercase tracking-[0.25em] text-primary/70">
                                         {result.type === "company"

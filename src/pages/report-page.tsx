@@ -38,6 +38,7 @@ import {
     translateCompanyMetric,
     companyMetricExplanations,
 } from "@/lib/company-metrics";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 type TableColumnMeta = {
     headerClassName?: string;
@@ -350,13 +351,21 @@ export function ReportPage(): JSX.Element {
                                     className="w-full rounded-2xl border border-border/40 bg-muted/80 p-4 text-left shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                                 >
                                     <div className="flex items-center justify-between gap-3">
-                                        <div>
-                                            <p className="text-base font-semibold text-foreground">
-                                                {company.koreanName}
-                                            </p>
-                                            <p className="text-xs text-muted-foreground">
-                                                {company.brandLabel}
-                                            </p>
+                                        <div className="flex items-center gap-3">
+                                            <Avatar className="h-7 w-7">
+                                                <AvatarImage
+                                                    src={company.logoUrl}
+                                                    alt={company.name}
+                                                />
+                                            </Avatar>
+                                            <div>
+                                                <p className="text-base font-semibold text-foreground">
+                                                    {company.koreanName}
+                                                </p>
+                                                <p className="text-xs text-muted-foreground">
+                                                    {company.brandLabel}
+                                                </p>
+                                            </div>
                                         </div>
                                         <span className="text-sm font-semibold text-primary">
                                             {computeCompanyDonutGrade(
