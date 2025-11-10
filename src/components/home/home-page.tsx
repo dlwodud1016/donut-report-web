@@ -42,6 +42,7 @@ export function HomePage(): JSX.Element {
             .filter(
                 (company) =>
                     company.name.toLowerCase().includes(term) ||
+                    company.koreanName.toLowerCase().includes(term) ||
                     company.ticker.toLowerCase().includes(term) ||
                     company.focus.some((tag) =>
                         tag.toLowerCase().includes(term)
@@ -49,7 +50,7 @@ export function HomePage(): JSX.Element {
             )
             .map((company) => ({
                 id: company.id,
-                label: company.name,
+                label: `${company.koreanName} (${company.name})`,
                 description: company.ticker,
                 route: `/report/${company.id}`,
                 type: "company" as const,

@@ -31,6 +31,7 @@ export type CompanyMetricDetail = {
 export type CompanyInsight = {
     id: string;
     name: string;
+    koreanName: string;
     brandLabel: string;
     industry: string;
     ticker: string;
@@ -48,6 +49,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "palantir",
         name: "Palantir Technologies",
+        koreanName: "팔란티어 테크놀로지스",
         brandLabel: "데이터·AI 플랫폼",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NYSE: PLTR",
@@ -127,6 +129,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "snowflake",
         name: "Snowflake",
+        koreanName: "스노우플레이크",
         brandLabel: "데이터 클라우드",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: SNOW",
@@ -206,6 +209,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "crowdstrike",
         name: "CrowdStrike",
+        koreanName: "크라우드스트라이크",
         brandLabel: "사이버 보안 플랫폼",
         industry: "사이버 보안 · 미국 나스닥",
         ticker: "NASDAQ: CRWD",
@@ -285,6 +289,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "cisco",
         name: "Cisco Systems",
+        koreanName: "시스코 시스템즈",
         brandLabel: "AI 네트워킹 스택",
         industry: "통신장비 · 미국 나스닥",
         ticker: "NASDAQ: CSCO",
@@ -362,6 +367,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "cadence",
         name: "Cadence Design Systems",
+        koreanName: "케이던스 디자인 시스템즈",
         brandLabel: "EDA · 시스템 IP",
         industry: "소프트웨어 · 미국 나스닥",
         ticker: "NASDAQ: CDNS",
@@ -439,6 +445,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "vertiv",
         name: "Vertiv Holdings",
+        koreanName: "버티브 홀딩스",
         brandLabel: "데이터센터 전력·냉각",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: VRT",
@@ -516,6 +523,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "hpe",
         name: "Hewlett Packard Enterprise",
+        koreanName: "휴렛 팩커드 엔터프라이즈",
         brandLabel: "하이브리드 클라우드 & HPC",
         industry: "IT 인프라 · 뉴욕증권거래소",
         ticker: "NYSE: HPE",
@@ -593,6 +601,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "uber",
         name: "Uber Technologies",
+        koreanName: "우버 테크놀로지스",
         brandLabel: "모빌리티 · 배달 슈퍼앱",
         industry: "모빌리티 · 미국 뉴욕증권거래소",
         ticker: "NYSE: UBER",
@@ -670,6 +679,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "stellantis",
         name: "Stellantis",
+        koreanName: "스텔란티스",
         brandLabel: "소프트웨어 정의 OEM",
         industry: "자동차 · 유로넥스트",
         ticker: "NYSE: STLA",
@@ -747,6 +757,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "lucid",
         name: "Lucid Group",
+        koreanName: "루시드 그룹",
         brandLabel: "프리미엄 EV",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: LCID",
@@ -824,6 +835,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "tesla",
         name: "Tesla",
+        koreanName: "테슬라",
         brandLabel: "AI 제조 · 에너지",
         industry: "전기차 · 미국 나스닥",
         ticker: "NASDAQ: TSLA",
@@ -901,6 +913,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "ionq",
         name: "IonQ",
+        koreanName: "아이온큐",
         brandLabel: "트랩드 이온 양자 클라우드",
         industry: "양자컴퓨팅 · 미국 뉴욕증권거래소",
         ticker: "NYSE: IONQ",
@@ -978,6 +991,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "rigetti",
         name: "Rigetti Computing",
+        koreanName: "리게티 컴퓨팅",
         brandLabel: "초전도 양자 서비스",
         industry: "양자컴퓨팅 · 미국 나스닥",
         ticker: "NASDAQ: RGTI",
@@ -1055,6 +1069,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "keysight",
         name: "Keysight Technologies",
+        koreanName: "키사이트 테크놀로지스",
         brandLabel: "차세대 계측 · 양자 테스트",
         industry: "테스트계측 · 미국 뉴욕증권거래소",
         ticker: "NYSE: KEYS",
@@ -1132,6 +1147,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "eli-lilly",
         name: "Eli Lilly and Company",
+        koreanName: "일라이 릴리 앤드 컴퍼니",
         brandLabel: "대사·면역 바이오파마",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: LLY",
@@ -1209,6 +1225,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "johnson-johnson",
         name: "Johnson & Johnson",
+        koreanName: "존슨앤드존슨",
         brandLabel: "글로벌 헬스케어",
         industry: "제약 · 미국 뉴욕증권거래소",
         ticker: "NYSE: JNJ",
@@ -1286,6 +1303,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "novo-nordisk",
         name: "Novo Nordisk",
+        koreanName: "노보 노디스크",
         brandLabel: "대사질환 바이오",
         industry: "제약 · 덴마크 코펜하겐",
         ticker: "NYSE: NVO",
@@ -1363,6 +1381,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "oracle",
         name: "Oracle",
+        koreanName: "오라클",
         brandLabel: "클라우드 · 슈퍼컴퓨팅",
         industry: "소프트웨어 · 미국 뉴욕증권거래소",
         ticker: "NYSE: ORCL",
@@ -1440,6 +1459,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "caterpillar",
         name: "Caterpillar",
+        koreanName: "캐터필러",
         brandLabel: "자율 건설 로봇",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: CAT",
@@ -1517,6 +1537,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "belden",
         name: "Belden",
+        koreanName: "벨덴",
         brandLabel: "산업 네트워킹 · 로보틱스",
         industry: "산업재 · 뉴욕증권거래소",
         ticker: "NYSE: BDC",
@@ -1594,6 +1615,7 @@ export const companyInsights: CompanyInsight[] = [
     {
         id: "nokia",
         name: "Nokia",
+        koreanName: "노키아",
         brandLabel: "6G 네트워크 장비",
         industry: "통신장비 · 핀란드 헬싱키",
         ticker: "NYSE: NOK",

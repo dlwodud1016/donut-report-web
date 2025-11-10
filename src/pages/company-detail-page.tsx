@@ -44,10 +44,10 @@ export function CompanyDetailPage(): JSX.Element {
     );
 
     const pageTitle = company
-        ? `${company.name} 성장 인사이트 | Donut Report`
+        ? `${company.koreanName} (${company.name}) 성장 인사이트 | Donut Report`
         : "기업 인사이트를 찾을 수 없습니다 | Donut Report";
     const pageDescription = company
-        ? `${company.name}의 Donut Grade와 성장·수익성·모멘텀 지표를 한눈에 살펴보세요.`
+        ? `${company.koreanName} (${company.name})의 Donut Grade와 성장·수익성·모멘텀 지표를 한눈에 살펴보세요.`
         : "요청한 기업 인사이트를 찾을 수 없습니다.";
 
     usePageSeo({
@@ -57,6 +57,7 @@ export function CompanyDetailPage(): JSX.Element {
         keywords: company
             ? [
                   company.name,
+                  company.koreanName,
                   company.ticker,
                   company.brandLabel,
                   "Donut Grade",
@@ -146,7 +147,7 @@ export function CompanyDetailPage(): JSX.Element {
                                     {company.industry}
                                 </p>
                                 <h1 className="text-4xl font-semibold text-foreground">
-                                    {company.name}
+                                    {`${company.koreanName} (${company.name})`}
                                 </h1>
                                 <p className="text-base leading-relaxed text-muted-foreground">
                                     {company.summary}

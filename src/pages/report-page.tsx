@@ -77,7 +77,7 @@ export function ReportPage(): JSX.Element {
         return companyInsights.filter((company) => {
             const matchesSearch =
                 term.length === 0 ||
-                company.name.toLowerCase().includes(term) ||
+                company.koreanName.toLowerCase().includes(term) ||
                 company.brandLabel.toLowerCase().includes(term) ||
                 company.focus.some((tag) => tag.toLowerCase().includes(term));
             const matchesIndustry =
@@ -86,11 +86,13 @@ export function ReportPage(): JSX.Element {
         });
     }, [searchTerm, industryFilter]);
 
-    const columns = useMemo<ColumnDef<(typeof companyInsights)[number], unknown>[]>(
+    const columns = useMemo<
+        ColumnDef<(typeof companyInsights)[number], unknown>[]
+    >(
         () => [
             {
-                id: "name",
-                accessorFn: (row) => row.name,
+                id: "koreanName",
+                accessorFn: (row) => row.koreanName,
                 header: ({ column }) => (
                     <button
                         type="button"
@@ -123,7 +125,7 @@ export function ReportPage(): JSX.Element {
                             }
                         >
                             <span className="text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
-                                {company.name}
+                                {company.koreanName}
                             </span>
                             <span className="text-xs text-muted-foreground">
                                 {company.brandLabel}
@@ -150,41 +152,46 @@ export function ReportPage(): JSX.Element {
                     headerClassName: "text-sm text-muted-foreground",
                 },
             },
-            ...companyMetricKeys.map((key) =>
-                ({
-                    id: key,
-                    accessorFn: (company: (typeof companyInsights)[number]) =>
-                        company.metrics[key],
-                    header: ({ column }) => (
-                        <button
-                            type="button"
-                            className="mx-auto flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
-                            onClick={() =>
-                                column.toggleSorting(
-                                    column.getIsSorted() === "asc"
-                                )
-                            }
-                        >
-                            {translateCompanyMetric(key)}
-                            <ArrowUpDown
-                                className={`h-3.5 w-3.5 transition ${
-                                    column.getIsSorted()
-                                        ? "text-foreground"
-                                        : "text-muted-foreground"
-                                }`}
-                            />
-                        </button>
-                    ),
-                    cell: ({ getValue }) => (
-                        <span className="font-semibold text-foreground">
-                            {getValue<number>()}
-                        </span>
-                    ),
-                    meta: {
-                        headerClassName: "whitespace-nowrap text-center",
-                        cellClassName: "text-center",
-                    },
-                } satisfies ColumnDef<(typeof companyInsights)[number], unknown>)
+            ...companyMetricKeys.map(
+                (key) =>
+                    ({
+                        id: key,
+                        accessorFn: (
+                            company: (typeof companyInsights)[number]
+                        ) => company.metrics[key],
+                        header: ({ column }) => (
+                            <button
+                                type="button"
+                                className="mx-auto flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
+                                onClick={() =>
+                                    column.toggleSorting(
+                                        column.getIsSorted() === "asc"
+                                    )
+                                }
+                            >
+                                {translateCompanyMetric(key)}
+                                <ArrowUpDown
+                                    className={`h-3.5 w-3.5 transition ${
+                                        column.getIsSorted()
+                                            ? "text-foreground"
+                                            : "text-muted-foreground"
+                                    }`}
+                                />
+                            </button>
+                        ),
+                        cell: ({ getValue }) => (
+                            <span className="font-semibold text-foreground">
+                                {getValue<number>()}
+                            </span>
+                        ),
+                        meta: {
+                            headerClassName: "whitespace-nowrap text-center",
+                            cellClassName: "text-center",
+                        },
+                    } satisfies ColumnDef<
+                        (typeof companyInsights)[number],
+                        unknown
+                    >)
             ),
             {
                 id: "donutGrade",
@@ -266,10 +273,10 @@ export function ReportPage(): JSX.Element {
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                     <p>
-                        성장력, 수익성, 안정성, 모멘텀, 밸류에이션, 혁신성, 주주가치
-                        일곱 개의 축을 Donut Grade로 정규화해 기업을 비교합니다. 숫자를
-                        클릭하면 전용 상세 페이지에서 최근 하이라이트와 뉴스까지 확인할
-                        수 있어요.
+                        성장력, 수익성, 안정성, 모멘텀, 밸류에이션, 혁신성,
+                        주주가치 일곱 개의 축을 Donut Grade로 정규화해 기업을
+                        비교합니다. 숫자를 클릭하면 전용 상세 페이지에서 최근
+                        하이라이트와 뉴스까지 확인할 수 있어요.
                     </p>
                 </CardContent>
             </Card>
@@ -280,12 +287,17 @@ export function ReportPage(): JSX.Element {
                         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                         <Input
                             value={searchTerm}
-                            onChange={(event) => setSearchTerm(event.target.value)}
+                            onChange={(event) =>
+                                setSearchTerm(event.target.value)
+                            }
                             placeholder="기업명, 사업 분야, 키워드 검색"
                             className="pl-9"
                         />
                     </div>
-                    <Select value={industryFilter} onValueChange={setIndustryFilter}>
+                    <Select
+                        value={industryFilter}
+                        onValueChange={setIndustryFilter}
+                    >
                         <SelectTrigger>
                             <SelectValue placeholder="산업 선택" />
                         </SelectTrigger>
@@ -321,12 +333,16 @@ export function ReportPage(): JSX.Element {
                                     <div className="flex items-center justify-between gap-3">
                                         <div>
                                             <p className="text-base font-semibold text-foreground">
-                                                {company.name}
+                                                {company.koreanName}
                                             </p>
-                                            <p className="text-xs text-muted-foreground">{company.brandLabel}</p>
+                                            <p className="text-xs text-muted-foreground">
+                                                {company.brandLabel}
+                                            </p>
                                         </div>
                                         <span className="text-sm font-semibold text-primary">
-                                            {computeCompanyDonutGrade(company).toFixed(1)}
+                                            {computeCompanyDonutGrade(
+                                                company
+                                            ).toFixed(1)}
                                         </span>
                                     </div>
                                     <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
@@ -334,8 +350,15 @@ export function ReportPage(): JSX.Element {
                                     </p>
                                     <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-muted-foreground">
                                         {companyMetricKeys.map((key) => (
-                                            <div key={key} className="flex items-center justify-between gap-2 rounded-xl border border-border/30 bg-background/40 px-3 py-2">
-                                                <span>{translateCompanyMetric(key)}</span>
+                                            <div
+                                                key={key}
+                                                className="flex items-center justify-between gap-2 rounded-xl border border-border/30 bg-background/40 px-3 py-2"
+                                            >
+                                                <span>
+                                                    {translateCompanyMetric(
+                                                        key
+                                                    )}
+                                                </span>
                                                 <span className="font-semibold text-foreground">
                                                     {company.metrics[key]}
                                                 </span>
@@ -353,18 +376,22 @@ export function ReportPage(): JSX.Element {
                                 {table.getHeaderGroups().map((headerGroup) => (
                                     <TableRow key={headerGroup.id}>
                                         {headerGroup.headers.map((header) => {
-                                            const meta = header.column.columnDef.meta as
+                                            const meta = header.column.columnDef
+                                                .meta as
                                                 | TableColumnMeta
                                                 | undefined;
                                             return (
                                                 <TableHead
                                                     key={header.id}
-                                                    className={meta?.headerClassName}
+                                                    className={
+                                                        meta?.headerClassName
+                                                    }
                                                 >
                                                     {header.isPlaceholder
                                                         ? null
                                                         : flexRender(
-                                                              header.column.columnDef
+                                                              header.column
+                                                                  .columnDef
                                                                   .header,
                                                               header.getContext()
                                                           )}
@@ -386,23 +413,33 @@ export function ReportPage(): JSX.Element {
                                     </TableRow>
                                 ) : (
                                     table.getRowModel().rows.map((row) => (
-                                        <TableRow key={row.id} className="text-sm">
-                                            {row.getVisibleCells().map((cell) => {
-                                                const meta = cell.column.columnDef.meta as
-                                                    | TableColumnMeta
-                                                    | undefined;
-                                                return (
-                                                    <TableCell
-                                                        key={cell.id}
-                                                        className={meta?.cellClassName}
-                                                    >
-                                                        {flexRender(
-                                                            cell.column.columnDef.cell,
-                                                            cell.getContext()
-                                                        )}
-                                                    </TableCell>
-                                                );
-                                            })}
+                                        <TableRow
+                                            key={row.id}
+                                            className="text-sm"
+                                        >
+                                            {row
+                                                .getVisibleCells()
+                                                .map((cell) => {
+                                                    const meta = cell.column
+                                                        .columnDef.meta as
+                                                        | TableColumnMeta
+                                                        | undefined;
+                                                    return (
+                                                        <TableCell
+                                                            key={cell.id}
+                                                            className={
+                                                                meta?.cellClassName
+                                                            }
+                                                        >
+                                                            {flexRender(
+                                                                cell.column
+                                                                    .columnDef
+                                                                    .cell,
+                                                                cell.getContext()
+                                                            )}
+                                                        </TableCell>
+                                                    );
+                                                })}
                                         </TableRow>
                                     ))
                                 )}
@@ -418,8 +455,8 @@ export function ReportPage(): JSX.Element {
                         Donut Grade 일곱 축 가이드
                     </CardTitle>
                     <p className="text-sm text-muted-foreground">
-                        성장력부터 혁신성, 주주가치까지 핵심 축이 어떻게 정의되는지 이해하면 점수를 더 빠르게
-                        해석할 수 있습니다.
+                        성장력부터 혁신성, 주주가치까지 핵심 축이 어떻게
+                        정의되는지 이해하면 점수를 더 빠르게 해석할 수 있습니다.
                     </p>
                 </CardHeader>
                 <CardContent className="grid gap-3 p-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -434,12 +471,13 @@ export function ReportPage(): JSX.Element {
                             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
                                 {item.label}
                             </p>
-                            <p className="text-sm leading-relaxed">{item.description}</p>
+                            <p className="text-sm leading-relaxed">
+                                {item.description}
+                            </p>
                         </div>
                     ))}
                 </CardContent>
             </Card>
-
         </div>
     );
 }
