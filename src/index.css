@@ -99,6 +99,17 @@
     }
   }
 
+  @keyframes hyperspeed-stream {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate3d(0, -35%, 0) scale(1.2);
+      opacity: 0.25;
+    }
+  }
+
   .threads-scroll {
     animation: threads-scroll var(--threads-duration, 18s) linear infinite;
   }
@@ -135,5 +146,79 @@
       hsla(35, 90%, 60%, 0.7) 50%,
       hsla(35, 90%, 60%, 0) 100%
     );
+  }
+
+  .hyperspeed-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: lighten;
+  }
+
+  .hyperspeed-bg__field {
+    position: absolute;
+    inset: -30%;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(99, 102, 241, 0) 0px,
+      rgba(99, 102, 241, 0) calc(var(--hyperspeed-gap, 28px) - 3px),
+      rgba(99, 102, 241, 0.8) calc(var(--hyperspeed-gap, 28px) - 3px),
+      rgba(99, 102, 241, 0.25) var(--hyperspeed-gap, 28px)
+    );
+    animation: hyperspeed-stream var(--hyperspeed-duration, 12s) linear infinite;
+    filter: blur(var(--hyperspeed-blur, 1px));
+    opacity: 0.7;
+  }
+
+  .hyperspeed-bg__field--secondary {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(59, 130, 246, 0) 0px,
+      rgba(59, 130, 246, 0) calc(var(--hyperspeed-gap, 28px) - 5px),
+      rgba(59, 130, 246, 0.85) calc(var(--hyperspeed-gap, 28px) - 5px),
+      rgba(59, 130, 246, 0.3) var(--hyperspeed-gap, 28px)
+    );
+    animation-duration: calc(var(--hyperspeed-duration, 12s) * 0.85);
+    animation-direction: reverse;
+    opacity: 0.5;
+  }
+
+  .hyperspeed-bg__glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 25%, rgba(99, 102, 241, 0.35), transparent 60%);
+    filter: blur(45px);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+  }
+
+  .true-focus {
+    position: relative;
+    display: inline-flex;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: hsla(0, 0%, 100%, 0.15);
+    --focus-x: 50%;
+    --focus-y: 50%;
+  }
+
+  .true-focus__base {
+    color: hsla(215, 18%, 65%, 0.4);
+    filter: blur(0.3px);
+  }
+
+  .true-focus__highlight {
+    position: absolute;
+    inset: 0;
+    color: #fff;
+    background: radial-gradient(circle at var(--focus-x, 50%) var(--focus-y, 50%), rgba(147, 197, 253, 0.9), rgba(59, 130, 246, 0.15) 60%, rgba(15, 23, 42, 0) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 10px 35px rgba(15, 23, 42, 0.45);
+    mask-image: radial-gradient(circle at var(--focus-x, 50%) var(--focus-y, 50%), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 70%);
+    -webkit-mask-image: radial-gradient(circle at var(--focus-x, 50%) var(--focus-y, 50%), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 70%);
   }
 }

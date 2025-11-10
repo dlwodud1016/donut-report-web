@@ -4,18 +4,9 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DonutIcon } from "@/components/icons/donut-icon";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import { Threads } from "@/components/ui/threads";
-import { hero, metricChips } from "@/data/palantir";
 import { companyInsights } from "@/data/insights";
 import { tastemakerProfiles } from "@/data/tastemakers";
 import { usePageSeo } from "@/hooks/use-page-seo";
-
-const navItems = [
-    { label: "리포트", to: "/report" as const },
-    { label: "인플루언서", to: "/tastemakers" as const },
-] as const;
 
 type SearchResult = {
     id: string;
@@ -93,132 +84,81 @@ export function HomePage(): JSX.Element {
     };
 
     return (
-        <main className="relative min-h-screen bg-background">
-            <Threads
-                amplitude={1}
-                enableMouseInteraction
-                className="opacity-70"
-            />
-            <div className="relative z-10 flex min-h-screen flex-col">
-                <header className="flex flex-wrap items-center justify-between gap-4 px-6 py-4">
-                    <div className="flex items-center gap-2 text-lg font-semibold text-foreground">
-                        <DonutIcon
-                            className="h-8 w-8 text-primary"
-                            variant="glass"
+        <main className="relative bg-background">
+            <section className="flex flex-1 flex-col items-center justify-start px-4 pb-16 pt-20">
+                <div className="flex flex-col items-center gap-4 text-center">
+                    <p className="text-xs uppercase tracking-[0.35em] text-primary/70">
+                        Flavor the Market
+                    </p>
+                    <h1 className="text-4xl font-semibold leading-tight text-foreground md:text-5xl">
+                        Search. Taste. Decide.
+                    </h1>
+                    <p className="max-w-2xl text-sm text-muted-foreground">
+                        Type a company, ticker, or tastemaker and jump
+                        straight to the story behind the numbers. Pure
+                        signal, zero clutter—Donut Report’s way.
+                    </p>
+                </div>
+
+                <div className="mt-10 w-full max-w-2xl space-y-4">
+                    <div className="sticky top-8 z-20 flex items-center gap-3 rounded-full border border-border/50 bg-card/90 px-5 py-3 shadow-sm backdrop-blur">
+                        <Search className="h-4 w-4 text-muted-foreground" />
+                        <Input
+                            value={searchTerm}
+                            onChange={(event) =>
+                                setSearchTerm(event.target.value)
+                            }
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter") handleSubmit();
+                            }}
+                            placeholder="기업명, 심볼, 인플루언서 이름 검색"
+                            className="border-0 bg-transparent p-0 pl-2 text-base focus-visible:ring-0"
                         />
-                        Donut Report
-                    </div>
-                    <nav className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                        {navItems.map((item) => (
-                            <Button
-                                key={item.to}
-                                variant="ghost"
-                                className="px-3 text-muted-foreground hover:text-primary"
-                                onClick={() => navigate({ to: item.to })}
-                            >
-                                {item.label}
-                            </Button>
-                        ))}
-                    </nav>
-                    <div className="flex items-center gap-2">
                         <Button
-                            variant="outline"
-                            className="border-border/60 text-sm text-muted-foreground"
-                            onClick={() => navigate({ to: "/report" })}
+                            variant="secondary"
+                            className="rounded-full px-5"
+                            onClick={handleSubmit}
                         >
-                            로그인
+                            검색
                         </Button>
-                        <ModeToggle />
                     </div>
-                </header>
-
-                <section className="flex flex-1 flex-col items-center justify-start px-4 pb-16 pt-20">
-                    <div className="flex flex-col items-center gap-4 text-center">
-                        <p className="text-xs uppercase tracking-[0.35em] text-primary/70">
-                            Flavor the Market
-                        </p>
-                        <h1 className="text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-                            Search. Taste. Decide.
-                        </h1>
-                        <p className="max-w-2xl text-sm text-muted-foreground">
-                            Type a company, ticker, or tastemaker and jump
-                            straight to the story behind the numbers. Pure
-                            signal, zero clutter—Donut Report’s way.
-                        </p>
+                    <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1 text-sm">
+                        {searchTerm.length === 0 ? (
+                            <p className="py-4 text-center text-muted-foreground">
+                                Palantir, SNOW, 워렌 버핏 등을 입력해
+                                보세요.
+                            </p>
+                        ) : searchResults.length === 0 ? (
+                            <p className="py-4 text-center text-muted-foreground">
+                                검색 결과가 없습니다.
+                            </p>
+                        ) : (
+                            searchResults.map((result) => (
+                                <button
+                                    key={`${result.type}-${result.id}`}
+                                    type="button"
+                                    onClick={() => handleSelect(result)}
+                                    className="flex w-full items-center justify-between rounded-full border border-border/30 bg-background/70 px-5 py-2 text-left transition hover:border-primary/40 hover:bg-background/90 dark:bg-slate-900/60"
+                                >
+                                    <span>
+                                        <p className="text-sm font-semibold text-foreground">
+                                            {result.label}
+                                        </p>
+                                        <p className="text-xs text-muted-foreground">
+                                            {result.description}
+                                        </p>
+                                    </span>
+                                    <span className="text-[10px] uppercase tracking-[0.25em] text-primary/70">
+                                        {result.type === "company"
+                                            ? "Report"
+                                            : "Tastemaker"}
+                                    </span>
+                                </button>
+                            ))
+                        )}
                     </div>
-
-                    <div className="mt-10 w-full max-w-2xl space-y-4">
-                        <div className="sticky top-8 z-20 flex items-center gap-3 rounded-full border border-border/50 bg-card/90 px-5 py-3 shadow-sm backdrop-blur">
-                            <Search className="h-4 w-4 text-muted-foreground" />
-                            <Input
-                                value={searchTerm}
-                                onChange={(event) =>
-                                    setSearchTerm(event.target.value)
-                                }
-                                onKeyDown={(event) => {
-                                    if (event.key === "Enter") handleSubmit();
-                                }}
-                                placeholder="기업명, 심볼, 인플루언서 이름 검색"
-                                className="border-0 bg-transparent p-0 pl-2 text-base focus-visible:ring-0"
-                            />
-                            <Button
-                                variant="secondary"
-                                className="rounded-full px-5"
-                                onClick={handleSubmit}
-                            >
-                                검색
-                            </Button>
-                        </div>
-                        <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1 text-sm">
-                            {searchTerm.length === 0 ? (
-                                <p className="py-4 text-center text-muted-foreground">
-                                    Palantir, SNOW, 워렌 버핏 등을 입력해
-                                    보세요.
-                                </p>
-                            ) : searchResults.length === 0 ? (
-                                <p className="py-4 text-center text-muted-foreground">
-                                    검색 결과가 없습니다.
-                                </p>
-                            ) : (
-                                searchResults.map((result) => (
-                                    <button
-                                        key={`${result.type}-${result.id}`}
-                                        type="button"
-                                        onClick={() => handleSelect(result)}
-                                        className="flex w-full items-center justify-between rounded-full border border-border/30 bg-background/70 px-5 py-2 text-left transition hover:border-primary/40 hover:bg-background/90 dark:bg-slate-900/60"
-                                    >
-                                        <span>
-                                            <p className="text-sm font-semibold text-foreground">
-                                                {result.label}
-                                            </p>
-                                            <p className="text-xs text-muted-foreground">
-                                                {result.description}
-                                            </p>
-                                        </span>
-                                        <span className="text-[10px] uppercase tracking-[0.25em] text-primary/70">
-                                            {result.type === "company"
-                                                ? "Report"
-                                                : "Tastemaker"}
-                                        </span>
-                                    </button>
-                                ))
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-                        <span className="rounded-full border border-border/40 px-3 py-1">
-                            {hero.ticker}
-                        </span>
-                        <span className="rounded-full border border-border/40 px-3 py-1">
-                            {hero.name}
-                        </span>
-                        <span className="rounded-full border border-border/40 px-3 py-1">
-                            {metricChips[0].label}: {metricChips[0].value}
-                        </span>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </main>
     );
 }

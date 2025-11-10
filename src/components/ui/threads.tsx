@@ -6,6 +6,7 @@ type ThreadsProps = {
     amplitude?: number;
     distance?: number;
     enableMouseInteraction?: boolean;
+    lineCount?: number;
     className?: string;
 };
 
@@ -13,6 +14,7 @@ export function Threads({
     amplitude = 1,
     distance = 0,
     enableMouseInteraction = true,
+    lineCount = 24,
     className,
 }: ThreadsProps): JSX.Element {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,7 @@ export function Threads({
         };
     }, [amplitude, enableMouseInteraction]);
 
-    const lines = Array.from({ length: 18 });
+    const lines = Array.from({ length: lineCount });
 
     return (
         <div
