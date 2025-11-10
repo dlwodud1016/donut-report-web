@@ -98,11 +98,12 @@ export function ReportPage(): JSX.Element {
                 cell: ({ row }) => {
                     const company = row.original;
                     return (
-                        <img
-                            src={company.logoUrl}
-                            alt={`${company.name} logo`}
-                            className="h-8 w-8 object-contain" // Adjust size as needed
-                        />
+                        <Avatar className="h-8 w-8">
+                            <AvatarImage
+                                src={company.logoUrl}
+                                alt={`${company.name} logo`}
+                            />
+                        </Avatar>
                     );
                 },
                 meta: {
